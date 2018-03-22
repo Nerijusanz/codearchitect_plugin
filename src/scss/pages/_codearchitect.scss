@@ -1,0 +1,14 @@
+.toplevel_page_codearchitect .wp-submenu .wp-first-item{display: none;}/*WP Panel: remove second child link Codearchitect;*/
+
+/*top navigation links for all pages*/
+.page .top-navigation {
+  li {
+    display: inline;
+    margin-left: 20px;
+  }
+
+  li a{
+    padding: 5px;
+  }
+
+}

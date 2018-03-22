@@ -1,0 +1,399 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: codearchitect\n"
+"POT-Creation-Date: 2018-03-16 17:02+0200\n"
+"PO-Revision-Date: 2018-03-16 17:02+0200\n"
+"Last-Translator: \n"
+"Language-Team: codearchitectTeam <nerijusanz@gmail.com>\n"
+"Language: lt_LT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.11\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_x\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: inc\n"
+
+#: inc/library/WP_List_Table/WP_List_Table.php:153
+msgid "List View"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:154
+msgid "Excerpt View"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:314
+#: inc/modules/cpt/CptSlider.php:54
+msgid "No items found."
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:436
+msgid "Select bulk action"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:438
+msgid "Bulk Actions"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:448
+msgid "Apply"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:496
+#: inc/library/WP_List_Table/WP_List_Table.php:1274
+msgid "Show more details"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:558
+msgid "Filter by date"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:560
+msgid "All dates"
+msgstr ""
+
+#. translators: 1: month name, 2: 4-digit year
+#: inc/library/WP_List_Table/WP_List_Table.php:573
+#, php-format
+msgid "%1$s %2$d"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:630
+#: inc/library/WP_List_Table/WP_List_Table.php:642
+#: inc/library/WP_List_Table/WP_List_Table.php:655
+msgid "No comments"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:642
+msgid "No approved comments"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:655
+msgid "No pending comments"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:765
+msgid "First page"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:775
+msgid "Previous page"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:782
+#: inc/library/WP_List_Table/WP_List_Table.php:785
+msgid "Current Page"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:791
+#, php-format
+msgid "%1$s of %2$s"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:798
+msgid "Next page"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:808
+msgid "Last page"
+msgstr ""
+
+#: inc/library/WP_List_Table/WP_List_Table.php:1028
+msgid "Select All"
+msgstr ""
+
+#: inc/modules/contact/ContactModule.php:77
+msgid "Contact form"
+msgstr ""
+
+#: inc/modules/contact/template/contact.php:26
+#: inc/modules/cpt/template/table/table_item_add.php:23
+#: inc/modules/cpt/template/table/table_item_edit.php:68
+#: inc/modules/manager/template/manager.php:26
+#: inc/modules/settings/template/settings.php:27
+#: inc/modules/supports/template/supports.php:26
+msgid "Save Changes"
+msgstr "Išsaugoti pakeitimus"
+
+#: inc/modules/cpt/CptCallback.php:36
+msgid "module name"
+msgstr ""
+
+#: inc/modules/cpt/CptCallback.php:49
+msgid "singular name"
+msgstr ""
+
+#: inc/modules/cpt/CptCallback.php:63
+msgid "plural name"
+msgstr ""
+
+#: inc/modules/cpt/CptModule.php:74
+msgid "CPT Module"
+msgstr ""
+
+#: inc/modules/cpt/CptModule.php:82
+msgid "Singular Name"
+msgstr ""
+
+#: inc/modules/cpt/CptModule.php:90
+msgid "Plural Name"
+msgstr ""
+
+#: inc/modules/cpt/CptModule.php:98 inc/modules/cpt/CptTable.php:119
+msgid "Public"
+msgstr ""
+
+#: inc/modules/cpt/CptModule.php:106 inc/modules/cpt/CptTable.php:120
+msgid "Archive"
+msgstr ""
+
+#: inc/modules/cpt/CptSetup.php:182 inc/modules/cpt/CptSetup.php:186
+#: inc/modules/cpt/CptSetup.php:200 inc/modules/cpt/CptSetup.php:204
+msgid "module not exist"
+msgstr ""
+
+#: inc/modules/cpt/CptSetup.php:225
+#, php-format
+msgid "module %s have posts in post type: %s"
+msgstr ""
+
+#: inc/modules/cpt/CptSetup.php:243
+msgid "back to list"
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:45 inc/modules/cpt/CptSlider.php:46
+msgid "Add New"
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:47
+msgid "New item"
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:48
+msgid "Edit item"
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:49 inc/modules/cpt/CptSlider.php:50
+msgid "View "
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:51
+msgid "All "
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:52
+msgid "Search "
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:53
+msgid "Parent "
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:55
+msgid "No items found in Trash."
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:60
+msgid "Description."
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:101
+msgid "Tilte"
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:102
+#: inc/modules/supports/SupportsCallback.php:23
+msgid "Date"
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:136
+msgid "Slide title"
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:143
+msgid "Slide text"
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:150
+msgid "Slide link text"
+msgstr ""
+
+#: inc/modules/cpt/CptSlider.php:152
+msgid "slide link text"
+msgstr ""
+
+#: inc/modules/cpt/CptTable.php:115
+msgid "Module ID"
+msgstr ""
+
+#: inc/modules/cpt/CptTable.php:116
+msgid "Module"
+msgstr ""
+
+#: inc/modules/cpt/CptTable.php:117
+#: inc/modules/cpt/template/table/table_item_delete.php:36
+#: inc/modules/cpt/template/table/table_item_edit.php:36
+msgid "Singular name"
+msgstr ""
+
+#: inc/modules/cpt/CptTable.php:118
+#: inc/modules/cpt/template/table/table_item_delete.php:41
+#: inc/modules/cpt/template/table/table_item_edit.php:41
+msgid "Plural name"
+msgstr ""
+
+#: inc/modules/cpt/CptTable.php:121
+msgid "Actions"
+msgstr ""
+
+#: inc/modules/cpt/CptTable.php:181
+msgid "items not found"
+msgstr ""
+
+#: inc/modules/cpt/CptTable.php:219
+msgid "Edit"
+msgstr ""
+
+#: inc/modules/cpt/CptTable.php:228
+msgid "Delete"
+msgstr ""
+
+#: inc/modules/cpt/CptTable.php:251
+msgid "All"
+msgstr ""
+
+#: inc/modules/cpt/CptTable.php:258
+msgid "Add new"
+msgstr ""
+
+#: inc/modules/cpt/template/cpt.php:20
+msgid "modules"
+msgstr ""
+
+#: inc/modules/cpt/template/table/table_item_delete.php:31
+#: inc/modules/cpt/template/table/table_item_edit.php:31
+msgid "CPT module name"
+msgstr ""
+
+#: inc/modules/cpt/template/table/table_item_delete.php:46
+#: inc/modules/cpt/template/table/table_item_edit.php:47
+msgid "Public status"
+msgstr ""
+
+#: inc/modules/cpt/template/table/table_item_delete.php:54
+#: inc/modules/cpt/template/table/table_item_edit.php:56
+msgid "Archive status"
+msgstr ""
+
+#: inc/modules/cpt/template/table/table_item_delete.php:65
+msgid "Delete module"
+msgstr ""
+
+#: inc/modules/manager/ManagerCallback.php:39
+#, php-format
+msgid "Activate %s Module"
+msgstr ""
+
+#: inc/modules/manager/ManagerModule.php:71
+msgid "Manager"
+msgstr ""
+
+#: inc/modules/settings/SettingsCallback.php:31
+msgid "company name"
+msgstr ""
+
+#: inc/modules/settings/SettingsCallback.php:45
+msgid "company address"
+msgstr ""
+
+#: inc/modules/settings/SettingsModule.php:77
+msgid "Shutdown site"
+msgstr ""
+
+#: inc/modules/settings/SettingsModule.php:86
+msgid "Company Name"
+msgstr ""
+
+#: inc/modules/settings/SettingsModule.php:94
+msgid "Company address"
+msgstr ""
+
+#: inc/modules/supports/SupportsModule.php:76
+msgid "supports"
+msgstr ""
+
+#: inc/setup/Setup.php:147
+msgid "Google Ananlytics"
+msgstr ""
+
+#: inc/setup/Setup.php:162
+msgid "published post on site:"
+msgstr ""
+
+#: inc/setup/Setup.php:164
+msgid " was published "
+msgstr ""
+
+#: inc/setup/Setup.php:165
+msgid " on date: "
+msgstr ""
+
+#: inc/setup/Setup.php:166
+msgid " by author: "
+msgstr ""
+
+#: inc/setup/Setup.php:167
+msgid " post link:"
+msgstr ""
+
+#: inc/setup/Setup.php:167
+msgid "link"
+msgstr ""
+
+#: inc/setup/Setup.php:177
+msgid "All Settings"
+msgstr ""
+
+#: inc/setup/Setup.php:232 inc/setup/Setup.php:246
+msgid "read more..."
+msgstr ""
+
+#: inc/site_core/menu/MenuInit.php:32
+msgid "Primary menu"
+msgstr ""
+
+#: inc/site_core/menu/MenuInit.php:36
+msgid "Footer menu"
+msgstr ""
+
+#: inc/widgets/PostPopularWidget.php:130
+msgid "Popular posts"
+msgstr ""
+
+#: inc/widgets/PostPopularWidget.php:136
+msgid "Title:"
+msgstr ""
+
+#: inc/widgets/PostPopularWidget.php:141
+msgid "Total posts:"
+msgstr ""
+
+#: inc/widgets/PostPopularWidget.php:146
+msgid "Allow title characters length:"
+msgstr ""
+
+#: inc/widgets/TextWidget.php:63
+msgid "Custom Text"
+msgstr ""
+
+#: inc/widgets/WidgetInit.php:31
+msgid "Sidebar"
+msgstr ""
+
+#: inc/widgets/WidgetInit.php:33
+msgid "Default sidebar to add all your widgets."
+msgstr ""

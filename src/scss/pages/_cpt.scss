@@ -1,0 +1,22 @@
+
+#cpt-table{
+
+  .tablenav .top-links li{/*top links:All,add new;*/
+
+      padding: 0;
+      margin-left: 20px;
+      display: inline;
+      position: relative;
+
+  }
+
+  .column-action .row-actions{left:0;}  /*turn on always show row links: edit,delete;*/
+
+  @media screen and (max-width: 782px){ .column-module_id{display: none;} .search-box{display: none;}}
+
+
+
+  tfoot{display: none;} /*turn off table tfoot tag*/
+
+}
+
