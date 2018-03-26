@@ -15,7 +15,7 @@ class Settings {
     public static $plugin_option;   //db name: codearchitect_plugin
     public static $plugin_db;   //get db option object: wp-options table; calling  self::init_plugin_db();
 
-    public static $plugin_init; // usage: setup/Setup.php __construct()
+    public static $plugin_init; // plugin main init file path; usage: setup/Setup.php __construct()
     public static $plugin_path; // path for php files
     public static $plugin_url; //url for: enqueue links, js, css files
 
