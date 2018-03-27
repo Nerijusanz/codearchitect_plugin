@@ -12,6 +12,11 @@
 *.tgz
 *.map
 
+# assests files #
+######################
+assets/*
+
+
 # Env files #
 ######################
 .env
