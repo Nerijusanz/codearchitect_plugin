@@ -63,7 +63,7 @@ class ContactSetup {
 
             $bank_name = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_name']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_name']):'';
             $bank_address = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_address']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_address']):'';
-            $bank_code = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_code']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_code']):'';
+            $bank_code = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_code']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_codegi']):'';
             $bank_swift_bic_code = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_swift_bic_code']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_swift_bic_code']):'';
             $bank_account_number = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_account_number']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_account_number']):'';
 
