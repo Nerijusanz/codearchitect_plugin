@@ -41,6 +41,8 @@ class ContactSetup {
 
     public function save_module_items(){
 
+        //var_dump($_POST);exit;
+
         if (isset($_POST[self::$module.'_module_form_add_submit'])):  //form submit
 
             $nonce_action = self::$module.'_module_form_add_action';
@@ -52,9 +54,34 @@ class ContactSetup {
             //validation
             $company_name = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['company_name']) )? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['company_name']) :'';
             $company_address = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['company_address']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['company_address']):'';
-            //add to list
+            $company_code = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['company_code']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['company_code']):'';
+            $company_pvm_code = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['company_pvm_code']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['company_pvm_code']):'';
+            $company_phone_fax = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['company_phone_fax']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['company_phone_fax']):'';
+            $company_mobile = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['company_mobile']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['company_mobile']):'';
+            $company_email = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['company_email']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['company_email']):'';
+            $company_working_hours = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['company_working_hours']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['company_working_hours']):'';
+
+            $bank_name = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_name']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_name']):'';
+            $bank_address = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_address']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_address']):'';
+            $bank_code = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_code']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_code']):'';
+            $bank_swift_bic_code = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_swift_bic_code']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_swift_bic_code']):'';
+            $bank_account_number = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_account_number']))? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['bank_account_number']):'';
+
+            //add to db list
             Settings::$plugin_db['modules'][self::$module]['company_name'] = $company_name;
             Settings::$plugin_db['modules'][self::$module]['company_address'] = $company_address;
+            Settings::$plugin_db['modules'][self::$module]['company_code'] = $company_code;
+            Settings::$plugin_db['modules'][self::$module]['company_pvm_code'] = $company_pvm_code;
+            Settings::$plugin_db['modules'][self::$module]['company_phone_fax'] = $company_phone_fax;
+            Settings::$plugin_db['modules'][self::$module]['company_mobile'] = $company_mobile;
+            Settings::$plugin_db['modules'][self::$module]['company_email'] = $company_email;
+            Settings::$plugin_db['modules'][self::$module]['company_working_hours'] = $company_working_hours;
+
+            Settings::$plugin_db['modules'][self::$module]['bank_name'] = $bank_name;
+            Settings::$plugin_db['modules'][self::$module]['bank_address'] = $bank_address;
+            Settings::$plugin_db['modules'][self::$module]['bank_code'] = $bank_code;
+            Settings::$plugin_db['modules'][self::$module]['bank_swift_bic_code'] = $bank_swift_bic_code;
+            Settings::$plugin_db['modules'][self::$module]['bank_account_number'] = $bank_account_number;
             //save to db
             update_option(Settings::$plugin_option,Settings::$plugin_db);
 

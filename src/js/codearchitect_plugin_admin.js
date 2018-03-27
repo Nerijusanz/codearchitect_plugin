@@ -2,9 +2,11 @@
 //import $ from '../../bower_components/jquery/dist/jquery.min.js';
 //import '../../bower_components/bootstrap-sass/assets/javascripts/bootstrap.js';
 
+
 import 'jquery';
 
 import 'jquery-ui';
+import 'bootstrap-sass/assets/javascripts/bootstrap';
 import 'jquery-ui/ui/widgets/datepicker';
 
 //import modules

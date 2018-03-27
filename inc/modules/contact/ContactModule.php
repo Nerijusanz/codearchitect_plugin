@@ -87,7 +87,85 @@ class ContactModule {
                 'page' => ContactSetup::$module_slug,
                 'section' => ContactSetup::$module_slug . '_index',
                 'callback' => function(){ContactCallback::field_company_address();}
+            ),
+            array(
+                'id' => ContactSetup::$module.'_company_code',  //plugin_name+page+field_name;
+                'title' => __('Company code',PLUGIN_DOMAIN), //localization
+                'page' => ContactSetup::$module_slug,
+                'section' => ContactSetup::$module_slug . '_index',
+                'callback' => function(){ContactCallback::field_company_code();}
+            ),
+            array(
+                'id' => ContactSetup::$module.'_company_pvm_code',  //plugin_name+page+field_name;
+                'title' => sprintf(__('%s tax code',PLUGIN_DOMAIN),'PVM'),
+                'page' => ContactSetup::$module_slug,
+                'section' => ContactSetup::$module_slug . '_index',
+                'callback' => function(){ContactCallback::field_company_pvm_code();}
+            ),
+            array(
+                'id' => ContactSetup::$module.'_company_phone_fax',  //plugin_name+page+field_name;
+                'title' => __('Company phone/fax',PLUGIN_DOMAIN),
+                'page' => ContactSetup::$module_slug,
+                'section' => ContactSetup::$module_slug . '_index',
+                'callback' => function(){ContactCallback::field_company_phone_fax();}
+            ),
+            array(
+                'id' => ContactSetup::$module.'_company_mobile',  //plugin_name+page+field_name;
+                'title' => __('Company mobile',PLUGIN_DOMAIN),
+                'page' => ContactSetup::$module_slug,
+                'section' => ContactSetup::$module_slug . '_index',
+                'callback' => function(){ContactCallback::field_company_mobile();}
+            ),
+            array(
+                'id' => ContactSetup::$module.'_company_email',  //plugin_name+page+field_name;
+                'title' => __('Company email',PLUGIN_DOMAIN),
+                'page' => ContactSetup::$module_slug,
+                'section' => ContactSetup::$module_slug . '_index',
+                'callback' => function(){ContactCallback::field_company_email();}
+            ),
+            array(
+                'id' => ContactSetup::$module.'_company_working_hours',  //plugin_name+page+field_name;
+                'title' => __('Company working hours',PLUGIN_DOMAIN),
+                'page' => ContactSetup::$module_slug,
+                'section' => ContactSetup::$module_slug . '_index',
+                'callback' => function(){ContactCallback::field_company_working_hours();}
+            ),
+            array(
+                'id' => ContactSetup::$module.'_bank_name',  //plugin_name+page+field_name;
+                'title' => __('Bank name',PLUGIN_DOMAIN),
+                'page' => ContactSetup::$module_slug,
+                'section' => ContactSetup::$module_slug . '_index',
+                'callback' => function(){ContactCallback::field_bank_name();}
+            ),
+            array(
+                'id' => ContactSetup::$module.'_bank_address',  //plugin_name+page+field_name;
+                'title' => __('Bank address',PLUGIN_DOMAIN),
+                'page' => ContactSetup::$module_slug,
+                'section' => ContactSetup::$module_slug . '_index',
+                'callback' => function(){ContactCallback::field_bank_address();}
+            ),
+            array(
+                'id' => ContactSetup::$module.'_bank_code',  //plugin_name+page+field_name;
+                'title' => __('Bank address',PLUGIN_DOMAIN),
+                'page' => ContactSetup::$module_slug,
+                'section' => ContactSetup::$module_slug . '_index',
+                'callback' => function(){ContactCallback::field_bank_code();}
+            ),
+            array(
+                'id' => ContactSetup::$module.'_bank_swift_bic_code',  //plugin_name+page+field_name;
+                'title' => __('Bank SWIFT/BIC',PLUGIN_DOMAIN),
+                'page' => ContactSetup::$module_slug,
+                'section' => ContactSetup::$module_slug . '_index',
+                'callback' => function(){ContactCallback::field_bank_swift_bic_code();}
+            ),
+            array(
+                'id' => ContactSetup::$module.'_bank_account_number',  //plugin_name+page+field_name;
+                'title' => __('Bank account number',PLUGIN_DOMAIN),
+                'page' => ContactSetup::$module_slug,
+                'section' => ContactSetup::$module_slug . '_index',
+                'callback' => function(){ContactCallback::field_bank_account_number();}
             )
+
         );
 
         ModulesApi::add_fields($fields);

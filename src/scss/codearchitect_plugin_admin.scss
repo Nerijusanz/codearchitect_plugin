@@ -2,14 +2,13 @@
 # Import Modules
 --------------------------------------------------------------*/
 //@import './node_modules/normalize.css/normalize';
-//bootstrap
-//@import './node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 
 //jquery-ui styles
 @import './node_modules/jquery-ui/themes/base/core';
 @import './node_modules/jquery-ui/themes/base/theme';
 @import './node_modules/jquery-ui/themes/base/datepicker';
-
+//bootstrap
+@import './node_modules/bootstrap-sass/assets/stylesheets/bootstrap';
 /*--------------------------------------------------------------
 # Base
 --------------------------------------------------------------*/
