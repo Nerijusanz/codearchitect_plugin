@@ -5,9 +5,7 @@
 
 namespace CA_Inc\modules\supports;
 
-use CA_Inc\setup\Settings;
-use CA_Inc\modules\api\ModulesOptions;
-use CA_Inc\modules\api\ModulesSetup;
+
 use CA_Inc\modules\api\ModulesApi;
 
 
