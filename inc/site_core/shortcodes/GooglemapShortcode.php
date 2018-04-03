@@ -31,8 +31,10 @@ class GooglemapShortcode {
 
 
         //make validation
-        $width = preg_replace('#[^0-9]#','',$atts['width']);
-        $height = preg_replace('#[^0-9]#','',$atts['height']);
+        //$width = preg_replace('#[^0-9]#','',$atts['width']);
+        //$height = preg_replace('#[^0-9]#','',$atts['height']);
+        $width=$atts['width'];
+        $height=$atts['height'];
         $src = $atts['src'];
 
 
