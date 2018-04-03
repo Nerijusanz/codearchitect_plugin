@@ -64,6 +64,7 @@ class Settings {
             'codearchitect'=>'codearchitect',   //main module
             'settings' => 'settings',
             'contact' => 'contact',
+            'contactform' => 'contactform',
             'cpt' => 'cpt',
             'supports' => 'supports',
             'manager' => 'manager'  //manager module: turn on/off other modules

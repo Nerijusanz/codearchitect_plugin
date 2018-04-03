@@ -46,6 +46,7 @@ final class Init    //setup final class - child classes can`t override or extend
         new modules\settings\SettingsInit();
         new modules\cpt\CptInit();
         new modules\contact\ContactInit();
+        new modules\contactform\ContactformInit();
         new modules\supports\SupportsInit();
 
     }

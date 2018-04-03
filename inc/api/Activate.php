@@ -10,14 +10,7 @@ use CA_Inc\setup\Settings;
 
 class Activate{
 
-    public function __construct(){
-
-        register_activation_hook( Settings::$plugin , array($this,'activate_plugin') );
-
-    }
-
-
-    public function activate_plugin(){
+    public static function activate_plugin(){
 
         flush_rewrite_rules();
 
