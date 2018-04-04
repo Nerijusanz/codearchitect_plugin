@@ -32,7 +32,7 @@ use CA_Inc\modules\contact\ContactCallback;
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
 
-            <a class="nav-item nav-link active" id="nav-company-tab" data-toggle="tab" href="#nav-company" role="tab" aria-controls="nav-company" aria-selected="true"><?php _e('Company',PLUGIN_DOMAIN);?></a>
+            <a class="nav-item nav-link active" id="nav-company-tab" data-toggle="tab" href="#nav-company" role="tab" aria-controls="nav-company" aria-selected="true"><?php _e('General',PLUGIN_DOMAIN);?></a>
             <a class="nav-item nav-link" id="nav-bank-tab" data-toggle="tab" href="#nav-bank" role="tab" aria-controls="nav-bank" aria-selected="false"><?php _e('Bank',PLUGIN_DOMAIN);?></a>
 
         </div>
