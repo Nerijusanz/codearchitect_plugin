@@ -108,7 +108,7 @@ class CptSlider {
 
     public function slider_meta_box($post){
 
-        add_meta_box($post,'Slide settings:',array($this,'slider_meta_box_callback'),$post);
+        add_meta_box($post,__('Slide settings:',PLUGIN_DOMAIN),array($this,'slider_meta_box_callback'),$post);
 
     }
 
@@ -121,11 +121,11 @@ class CptSlider {
 
         $post_meta = get_post_meta($post->ID);
 
-        $slide_title = (isset($post_meta['slide_title']) )? esc_attr($post_meta['slide_title'][0]):'';
-        $slide_text = (isset($post_meta['slide_text']) )? esc_attr($post_meta['slide_text'][0]):'';
-        $slide_link_text = (isset($post_meta['slide_link_text']) )? esc_attr($post_meta['slide_link_text'][0]):'';
+        $slide_title = (isset($post_meta['slide_title']) )? $post_meta['slide_title'][0]:'';
+        $slide_text = (isset($post_meta['slide_text']) )? $post_meta['slide_text'][0]:'';
+        $slide_link_text = (isset($post_meta['slide_link_text']) )? $post_meta['slide_link_text'][0]:'';
 
-        echo '<input type="hidden" name="custom_post_type" value="'.$custom_post_type.'" />'; // hidden field
+        echo '<input type="hidden" name="custom_post_type" value="'.esc_html($custom_post_type).'" />'; // hidden field
         ?>
 
         <table class="form-table">
@@ -135,21 +135,21 @@ class CptSlider {
             <tr>
                 <th scope="row"><?php _e('Slide title',PLUGIN_DOMAIN);?></th>
                 <td>
-                    <?php echo '<input type="text" name="'.Settings::$plugin.'['.$custom_post_type.'][slide_title]" value="'.$slide_title.'" placeholder="'.__('slide title',PLUGIN_DOMAIN).'" />';?>
+                    <?php echo '<input type="text" name="'.Settings::$plugin.'['.$custom_post_type.'][slide_title]" value="'.esc_html($slide_title).'" placeholder="'.__('slide title',PLUGIN_DOMAIN).'" />';?>
                 </td>
             </tr>
 
             <tr>
                 <th scope="row"><?php _e('Slide text',PLUGIN_DOMAIN);?></th>
                 <td>
-                    <?php echo '<textarea name="'.Settings::$plugin.'['.$custom_post_type.'][slide_text]" rows="8" placeholder="slide text">'.$slide_text.'</textarea>';?>
+                    <?php echo '<textarea name="'.Settings::$plugin.'['.$custom_post_type.'][slide_text]" rows="8" placeholder="slide text">'.esc_html($slide_text).'</textarea>';?>
                 </td>
             </tr>
 
             <tr>
                 <th scope="row"><?php _e('Slide link text',PLUGIN_DOMAIN);?></th>
                 <td>
-                    <?php echo '<input type="text" name="'.Settings::$plugin.'['.$custom_post_type.'][slide_link_text]" value="'.$slide_link_text.'" placeholder="'.__('slide link text',PLUGIN_DOMAIN).'" />';?>
+                    <?php echo '<input type="text" name="'.Settings::$plugin.'['.$custom_post_type.'][slide_link_text]" value="'.esc_html($slide_link_text).'" placeholder="'.__('slide link text',PLUGIN_DOMAIN).'" />';?>
                 </td>
             </tr>
 
@@ -184,10 +184,6 @@ class CptSlider {
         $nonce_action = $custom_post_type.'_save_action';
 
         if(!wp_verify_nonce($nonce, $nonce_action ))
-            return;
-
-
-        if(!isset($_POST[Settings::$plugin][$custom_post_type]))
             return;
 
 

@@ -17,7 +17,7 @@ class Init {
             return;
 
         new ContactformModule();    //init ContactModule
-
+        new ContactformMessageCpt(); //custom post type
     }
 
 } 

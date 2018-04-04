@@ -66,13 +66,22 @@ class ContactformModule {
     {
 
         $fields = array(
-            /*array(
-                'id' => 'supports',  //plugin_name+page+field_name;
-                'title' => __('supports',PLUGIN_DOMAIN),
+            array(
+                'id' => 'contact_form_activate_deactivate',
+                'title' => __('Contact Form activate/deactivate',PLUGIN_DOMAIN),    //localization
                 'page' => ContactformSetup::$module_slug,
                 'section' => ContactformSetup::$module_slug . '_index',
-                'callback' => function(){ContactformCallback::contactform();}
-            )*/
+                'callback' => function(){ContactformCallback::field_contact_form_activate_deactivate();}
+
+            ),
+            array(
+                'id' => 'contact_form_send_email',
+                'title' => __('Contact send email',PLUGIN_DOMAIN),    //localization
+                'page' => ContactformSetup::$module_slug,
+                'section' => ContactformSetup::$module_slug . '_index',
+                'callback' => function(){ContactformCallback::field_contact_form_send_email();}
+
+            )
         );
 
         ModulesApi::add_fields($fields);
