@@ -7,7 +7,7 @@ namespace CA_Inc\modules\contact;
 
 use CA_Inc\modules\api\ModulesSetup;
 
-class ContactInit {
+class Init {
 
 
     public function __construct(){

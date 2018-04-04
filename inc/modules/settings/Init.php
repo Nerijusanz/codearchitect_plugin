@@ -7,7 +7,7 @@ namespace CA_Inc\modules\settings;
 
 use CA_Inc\modules\api\ModulesSetup;
 
-class SettingsInit {
+class Init {
 
     public function __construct(){
 

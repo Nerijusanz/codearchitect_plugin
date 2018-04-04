@@ -7,7 +7,7 @@
 namespace CA_Inc\modules\manager;
 
 
-class ManagerInit {
+class Init {
 
     public function __construct(){
         //init module

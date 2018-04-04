@@ -6,7 +6,7 @@
 namespace CA_Inc\modules\codearchitect;
 
 
-class CodearchitectInit {
+class Init {
 
     public function __construct(){
 

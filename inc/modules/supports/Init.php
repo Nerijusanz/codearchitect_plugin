@@ -7,7 +7,7 @@ namespace CA_Inc\modules\supports;
 
 use CA_Inc\modules\api\ModulesSetup;
 
-class SupportsInit {
+class Init {
 
     public function __construct(){
 

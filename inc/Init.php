@@ -5,6 +5,8 @@
 namespace CA_Inc;
 
 
+use CA_Inc\setup\Settings;
+use CA_Inc\modules;
 final class Init    //setup final class - child classes can`t override or extend
 {
 
@@ -19,6 +21,7 @@ final class Init    //setup final class - child classes can`t override or extend
     {
 
         $this->plugin_core_classes();
+        $this->plugin_modules();
         $this->site_core_classes();
 
     }
@@ -37,17 +40,23 @@ final class Init    //setup final class - child classes can`t override or extend
         //widget
         new widgets\WidgetInit();   //wp widgets
 
+
+
+    }
+
+    public function plugin_modules(){
+
         //plugin modules api
         new modules\api\ModulesApi(); //class initialize modules admin_pages , subpages, settings,sections,fields;
         new modules\api\ModulesSetup(); //plugin all modules setup
         //plugin modules
-        new modules\codearchitect\CodearchitectInit();
-        new modules\manager\ManagerInit();
-        new modules\settings\SettingsInit();
-        new modules\cpt\CptInit();
-        new modules\contact\ContactInit();
-        new modules\contactform\ContactformInit();
-        new modules\supports\SupportsInit();
+        new modules\codearchitect\Init();
+        new modules\settings\Init();
+        new modules\contact\Init();
+        new modules\contactform\Init();
+        new modules\cpt\Init();
+        new modules\supports\Init();
+        new modules\manager\Init();
 
     }
 

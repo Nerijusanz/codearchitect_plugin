@@ -7,7 +7,7 @@ namespace CA_Inc\modules\contactform;
 
 use CA_Inc\modules\api\ModulesSetup;
 
-class ContactformInit {
+class Init {
 
     public function __construct(){
 

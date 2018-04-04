@@ -8,7 +8,7 @@ namespace CA_Inc\modules\cpt;
 use CA_Inc\modules\api\ModulesSetup;
 
 
-class CptInit {
+class Init {
 
     public function __construct(){
 
