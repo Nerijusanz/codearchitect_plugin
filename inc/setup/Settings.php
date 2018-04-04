@@ -57,17 +57,38 @@ class Settings {
     }
 
 
-    //created custom modules
+    //custom modules
     public static function init_modules(){
 
         self::$plugin_modules = array(
-            'codearchitect'=>'codearchitect',   //main module
-            'settings' => 'settings',
-            'contact' => 'contact',
-            'contactform' => 'contactform',
-            'cpt' => 'cpt',
-            'supports' => 'supports',
-            'manager' => 'manager'  //manager module: turn on/off other modules
+            'codearchitect'=>array(
+                'key'=>'codearchitect',
+                'title'=>'Codearchitect'
+            ),
+            'settings' =>array(
+                'key'=>'settings',
+                'title'=>'Settings'
+            ),
+            'contact' =>array(
+                'key'=>'contact',
+                'title'=>'Contact'
+            ),
+            'contactform' =>array(
+                'key'=>'contactform',
+                'title'=>'Contact form'
+            ),
+            'cpt' =>array(
+                'key'=>'cpt',
+                'title'=>'Cpt'
+            ),
+            'supports' =>array(
+                'key'=>'supports',
+                'title'=>'Supports'
+            ),
+            'manager' =>array(
+                'key'=>'manager',
+                'title'=>'Manager'
+            )//manager module: turn on/off other modules
         );
 
     }

@@ -25,13 +25,13 @@ class ContactSetup {
 
     public function __construct(){
 
-        self::$module = Settings::$plugin_modules['contact'];
+        self::$module = Settings::$plugin_modules['contact']['key'];
 
-        self::$module_parent_slug = Settings::$plugin_modules['codearchitect'];
+        self::$module_parent_slug = Settings::$plugin_modules['codearchitect']['key'];
 
         self::$module_slug = self::$module_parent_slug .'_'. self::$module;
 
-        self::$module_title=ucfirst( self::$module ); //uppercase first letter
+        self::$module_title = Settings::$plugin_modules['contact']['title'];
 
         $post_action = self::$module.'_module_form_add';   //action defined at form hidden field: contact/template/settings.php
         add_action( 'admin_post_'.$post_action, array($this,'save_module_items') );

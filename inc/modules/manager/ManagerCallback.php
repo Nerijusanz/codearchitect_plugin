@@ -26,17 +26,20 @@ class ManagerCallback {
 
             $output='';
 
-                foreach(Settings::$plugin_modules as $key => $title):
+                foreach(Settings::$plugin_modules as $plugin_module):
 
-                    if($key == ManagerSetup::$module  || $key == CodearchitectSetup::$module ) continue; //skip modules loop on currents keys;
-                    //var_dump($plugin_option['modules'][$key]['activate']);
-                    $check_status = ( isset(Settings::$plugin_db['modules'][ $key ]['activate']) && Settings::$plugin_db['modules'][ $key ]['activate'] == 1 )?'checked':'';
+                    $module = $plugin_module['key'];
+                    $module_title = $plugin_module['title'];
+
+                    if($module == ManagerSetup::$module  || $module == CodearchitectSetup::$module ) continue; //skip modules loop on currents keys;
+                    //var_dump($plugin_option['modules'][$module]['activate']);
+                    $check_status = ( isset(Settings::$plugin_db['modules'][ $module ]['activate']) && Settings::$plugin_db['modules'][ $module ]['activate'] == 1 )?'checked':'';
 
                     $output.='<div class="form-check">';
-                    $output.='<label class="form-check-label" for="'.$key.'">';
-                    $output.='<input type="checkbox" id="'.$key.'" name="'. Settings::$plugin_option.'[modules]['.$key.'][activate]" class="form-check-input '.$key.'" value="1" '.$check_status.' >';
+                    $output.='<label class="form-check-label" for="'.$module.'">';
+                    $output.='<input type="checkbox" id="'.$module.'" name="'. Settings::$plugin_option.'[modules]['.$module.'][activate]" class="form-check-input '.$module.'" value="1" '.$check_status.' >';
 
-                    $text = sprintf(__('Activate %s module',PLUGIN_DOMAIN),$title);
+                    $text = sprintf(__('Activate %s module',PLUGIN_DOMAIN),$module_title);
                     $output.= $text;
                     $output.='</div>';
 

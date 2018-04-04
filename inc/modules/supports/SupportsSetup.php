@@ -22,13 +22,13 @@ class SupportsSetup {
 
     public function __construct(){
 
-        self::$module = Settings::$plugin_modules['supports'];
+        self::$module = Settings::$plugin_modules['supports']['key'];
 
-        self::$module_parent_slug = Settings::$plugin_modules['codearchitect'];
+        self::$module_parent_slug = Settings::$plugin_modules['codearchitect']['key'];
 
         self::$module_slug = self::$module_parent_slug .'_'. self::$module;
 
-        self::$module_title=ucfirst( self::$module ); //uppercase first letter
+        self::$module_title=Settings::$plugin_modules['supports']['title']; //uppercase first letter
 
     }
 

@@ -26,11 +26,11 @@ class CptSetup {
 
     public function __construct(){
 
-        self::$module = Settings::$plugin_modules['cpt'];   //get module from modules list;
+        self::$module = Settings::$plugin_modules['cpt']['key'];   //get module from modules list;
 
-        self::$module_title=ucfirst( self::$module ); //uppercase first letter
+        self::$module_title=Settings::$plugin_modules['cpt']['title']; //uppercase first letter
 
-        self::$module_parent_slug = Settings::$plugin_modules['codearchitect']; //page parent slug
+        self::$module_parent_slug = Settings::$plugin_modules['codearchitect']['key']; //page parent slug
 
         self::$module_slug = self::$module_parent_slug .'_'. self::$module; //module page slug
 

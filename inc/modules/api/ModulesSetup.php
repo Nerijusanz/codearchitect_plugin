@@ -32,11 +32,13 @@ class ModulesSetup {
 
         $modules = array();
 
-        foreach(Settings::$plugin_modules as $key => $value):
+        foreach(Settings::$plugin_modules as $module):
 
-            $activate_status = ($key == ManagerSetup::$module || $key == CodearchitectSetup::$module)?1:0; //manager module always should be turn on;
+            $module = $module['key'];
 
-            $modules['modules'][$key]['activate'] = $activate_status;
+            $activate_status = ($module == ManagerSetup::$module || $module == CodearchitectSetup::$module)?1:0; //manager module always should be turn on;
+
+            $modules['modules'][$module]['activate'] = $activate_status;
 
         endforeach;
 
@@ -64,7 +66,10 @@ class ModulesSetup {
 
         $output='<ul class="top-navigation">';
 
-            foreach(Settings::$plugin_modules as $module => $module_title):
+            foreach(Settings::$plugin_modules as $plugin_module):
+
+                $module = $plugin_module['key'];
+                $module_title = $plugin_module['title'];
 
                 if( isset(Settings::$plugin_db['modules'][$module]['activate']) && Settings::$plugin_db['modules'][$module]['activate'] == 1 ):
 
