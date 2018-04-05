@@ -1,0 +1,140 @@
+//user agent style disable yellow background
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+
+  -webkit-transition-delay: 9999s;
+  -webkit-transition: color 9999s ease-out, background-color 9999s ease-out;
+}
+
+
+
+
+.awps-contact-form-wrap{
+  margin: 0 auto;
+  padding: 0;
+  display: block;
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  font-size: 12px;
+
+  .awps-contact-form-title{
+    display: block;
+    position: relative;
+    left: -25px;
+  }
+
+
+  .awps-contact-form-response-message {
+    position: relative;
+    display: block;
+    //font-size: 12px;
+    font-style: italic;
+    color: #333;
+
+    ul {
+      margin: 0;
+      padding: 0;
+      padding-left: 15px;
+      list-style: none;
+
+      li:before {
+        font-family: FontAwesome;
+        font-style: italic;
+        display: inline-block;
+        position: absolute;
+        left: 0;
+      }
+
+      &.success li:before {
+        content: "\f00c";
+      }
+      &.error li:before {
+        content: "\f00d";
+      }
+      &.process li:before {
+        content: "\f110";
+        @include spin(1200ms);
+      }
+      //.src/scss/base/mixins/_animations.scss
+
+      &.success {
+        color: #008000;
+      }
+      &.error {
+        color: red;
+      }
+
+    }//ul
+
+  }//.awps-contact-form-response-message
+
+
+
+
+  .awps-contact-form{
+    display: block;
+    position: relative;
+
+    .js-field-error{
+      border:1px solid red;
+    }
+
+    .form-group{
+      margin-bottom: 5px;
+    }
+
+    .js-form-control-msg{
+      font-size: 12px;
+      font-style: italic;
+    }
+
+
+    .form-btn{
+      margin-top: 0;
+      @include transition(all,320ms);
+      color: #fff;
+    }
+
+    label{display:block;margin-bottom: 2px;}
+
+    input,textarea,button{
+      border-radius: 0!important;
+    }
+
+    input,textarea{
+      &:hover,
+      &:focus,
+      &:active{
+        box-shadow: none!important;
+      }
+    }
+
+    input,textarea{
+      &:disabled{
+        background-color: #fff!important;
+      }
+    }
+
+    textarea{
+      resize: vertical; //only vertical element resize
+      min-height: 150px;
+      max-height: 300px;
+    }
+
+
+
+  }//.awps-contact-form
+
+
+}//.awps-contact-form-wrap
+
+

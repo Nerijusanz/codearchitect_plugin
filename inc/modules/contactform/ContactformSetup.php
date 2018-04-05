@@ -78,12 +78,26 @@ class ContactformSetup {
             'contact_form'  //[contact_form][/contact_form] this shortcode add to contact page content block;
         );
 
-        if( isset(Settings::$plugin_db['modules'][ self::$module ]['contact_activate_deactivate']) && Settings::$plugin_db['modules'][ self::$module ]['contact_activate_deactivate'] == 1 ) {
+        if(self::check_contact_activate_deactivate_status() == false)   //if form is deactivate, that`s mean shutdown on front-end;
+            return;
 
             ob_start(); //turn on output buffering;
                 require_once 'template/contact_form_template.php';//save template into output buffer, and do not let return or echo instantly template!!!
             return ob_get_clean(); //first lets render site content, and after rendered site content, insert buffer content
-        }
+
+
+    }
+
+    public static function check_contact_activate_deactivate_status(){
+
+        return (isset(Settings::$plugin_db['modules'][ self::$module ]['contact_activate_deactivate']) && Settings::$plugin_db['modules'][ self::$module ]['contact_activate_deactivate'] == 1 )?true:false;
+
+    }
+
+
+    public static function check_send_email_status(){
+
+        return (isset(Settings::$plugin_db['modules'][self::$module]['contact_send_email']) && Settings::$plugin_db['modules'][self::$module]['contact_send_email'] == 1)?true:false;
 
     }
 

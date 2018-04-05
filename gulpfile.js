@@ -34,6 +34,8 @@ var npm = './node_modules';
 //SCSS
 var styleAdminSrcFile = 'codearchitect_plugin_admin.scss';
 var styleAdminSRC = './src/scss/' + styleAdminSrcFile;
+var styleFrontSrcFile = 'codearchitect_plugin_front.scss';
+var styleFrontSRC = './src/scss/'+styleFrontSrcFile;
 var styleURL     = './assets/css/';
 var mapURL       = './';
 
@@ -41,8 +43,9 @@ var mapURL       = './';
 var jsSRC        = './src/js/';
 var jsSrcSettingsFile      = 'codearchitect_plugin_settings.js';
 var jsSrcAdminFile      = 'codearchitect_plugin_admin.js';
+var jsSrcFrontFile  = 'codearchitect_plugin_front.js';
 var jsAdminFrontFile = 'codearchitect_plugin_admin.min.js'; //added prefix min.js
-var jsFiles      = [ jsSrcSettingsFile, jsSrcAdminFile ];
+var jsFiles      = [ jsSrcSettingsFile, jsSrcAdminFile, jsSrcFrontFile ];
 var jsURL        = './assets/js/';
 
 
@@ -73,7 +76,8 @@ gulp.task( 'browser-sync', function() {
 });
 
 gulp.task( 'styles', function() {
-    gulp.src( [ styleAdminSRC ] )
+
+    gulp.src( [ styleAdminSRC, styleFrontSRC ] )
         .pipe( sourcemaps.init() )
         .pipe( sass({
             errLogToConsole: true,

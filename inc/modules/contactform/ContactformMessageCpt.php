@@ -16,8 +16,8 @@ class ContactformMessageCpt{
     public function __construct(){
 
         self::$custom_post_type = 'contactform_message';
-        self::$singular_name = 'Contact Message';
-        self::$plural_name = 'Contact Messages';
+        self::$singular_name = __('Contact Message',PLUGIN_DOMAIN);
+        self::$plural_name = __('Contact Messages',PLUGIN_DOMAIN);
 
         add_action('init', array($this, 'register_custom_post_type'));
 
@@ -28,7 +28,6 @@ class ContactformMessageCpt{
         add_action('save_post',array($this,'save_post_meta'));
 
         add_action('after_switch_theme', array($this, 'rewrite_flush'));
-
 
     }
 
@@ -58,8 +57,8 @@ class ContactformMessageCpt{
             'label'              => self::$singular_name,
             'description'        => __( 'Description',PLUGIN_DOMAIN ),
             'labels'             => $labels,
-            'public'             => true,
-            'publicly_queryable' => true,
+            'public'             => false,
+            'publicly_queryable' => false,  //important
             'show_ui'            => true,
             'show_in_menu'       => true,
             'show_in_admin_bar'  => false,
@@ -72,9 +71,9 @@ class ContactformMessageCpt{
             'hierarchical'       => false,
             'can_export'         => true,
             'menu_position'      => 112,
-            'taxonomies'         => array('category','post_tag'), //default wp taxonomies
+            'taxonomies'         => array(), //array('category','post_tag'), //default wp taxonomies
             'exclude_from_search' => false,
-            'supports'           => array( 'title','thumbnail' ) //editor, author
+            'supports'           => array( 'title','editor','author' ) //editor, author
 
         );
 
@@ -100,6 +99,8 @@ class ContactformMessageCpt{
 
     public function columns_content_setup($column,$post_id){    //note: this wp function is singular and do loop on every post and columns to add custom content
 
+        $post_meta = get_post_meta($post_id);
+
         switch($column){
 
             case 'message':
@@ -108,7 +109,7 @@ class ContactformMessageCpt{
                 break;
 
             case 'email':
-                $email = (isset($post_meta['user_email']) )? esc_attr($post_meta['user_email'][0]):'';
+                $email = (isset($post_meta['user_email'][0]) )? esc_attr($post_meta['user_email'][0]):'';
                 $email = (!empty($email))?'<a href="mailto:'.$email.'">'.$email.'</a>':'no email';
                 echo $email;
                 break;
@@ -118,9 +119,9 @@ class ContactformMessageCpt{
     }
 
 
-    public function meta_box($post){
+    public function meta_box(){
 
-        add_meta_box($post,__('Contact settings',PLUGIN_DOMAIN),array($this,'meta_box_callback'),$post);
+        add_meta_box(self::$custom_post_type.'_contact_settings',__('Contact settings',PLUGIN_DOMAIN),array($this,'meta_box_callback'),self::$custom_post_type,'normal');
 
     }
 
@@ -144,7 +145,7 @@ class ContactformMessageCpt{
                 <tr>
                     <th scope="row"><?php _e('User email:',PLUGIN_DOMAIN);?></th>
                     <td>
-                        <?php echo '<input type="text" name="'.Settings::$plugin.'['.self::$custom_post_type.'][user_email]" value="'.esc_attr($user_email).'" placeholder="'.__('user email',PLUGIN_DOMAIN).'" />';?>
+                        <?php echo '<input type="text" name="'.Settings::$plugin.'[modules]['.ContactformSetup::$module.'][custom_post_type]['.self::$custom_post_type.'][user_email]" value="'.esc_attr($user_email).'" placeholder="'.__('user email',PLUGIN_DOMAIN).'" />';?>
                     </td>
                 </tr>
 
@@ -169,7 +170,7 @@ class ContactformMessageCpt{
         if(!current_user_can('edit_post', $post_id))
             return;
 
-        if(!isset($_POST['custom_post_type']) && $_POST['custom_post_type'] != self::$custom_post_type ) //custom post type name
+        if(isset($_POST['custom_post_type']) && $_POST['custom_post_type'] != self::$custom_post_type ) //custom post type name
             return;
 
         $nonce = ( isset($_POST[ self::$custom_post_type.'_save_nonce']) )? $_POST[ self::$custom_post_type.'_save_nonce']:'';
@@ -181,7 +182,7 @@ class ContactformMessageCpt{
 
         if(isset($_POST[Settings::$plugin][self::$custom_post_type]['user_email'])){
 
-            $user_email = sanitize_text_field( $_POST[Settings::$plugin][self::$custom_post_type]['user_email'] );
+            $user_email = sanitize_text_field( $_POST[Settings::$plugin]['modules'][ContactformSetup::$module]['custom_post_type'][self::$custom_post_type]['user_email'] );
 
             update_post_meta($post_id,'user_email',$user_email);
         }
