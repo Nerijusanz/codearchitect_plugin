@@ -18,6 +18,7 @@ class Init {
 
         new ContactformModule();    //init ContactModule
         new ContactformMessageCpt(); //custom post type
+        new ContactformMessageProcess(); //process contact form data
     }
 
 } 

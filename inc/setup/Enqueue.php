@@ -56,9 +56,13 @@ class Enqueue {
 
 
 	public function frontend_enqueue() {
+
+        wp_enqueue_style( 'front-style', Settings::$plugin_url . 'assets/css/codearchitect_plugin_front.min.css', array(), '', 'all' );
         //plugin back-end settings to js file
 		wp_enqueue_script( 'front-settings', Settings::$plugin_url . 'assets/js/codearchitect_plugin_settings.min.js', array(), true );    //for localization params
         wp_localize_script('front-settings',Settings::$localize_front_settings_name,Settings::$localize_front_settings); //Settings->localize_front_settings();
+
+        wp_enqueue_script( 'front-js', Settings::$plugin_url . 'assets/js/codearchitect_plugin_front.min.js', array(), true );
 
 	}
 

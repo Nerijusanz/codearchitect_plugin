@@ -95,7 +95,17 @@ class ContactSetup {
 
     public static function get_contact_module_item($item_name){
 
-        return Settings::$plugin_db['modules'][self::$module][$item_name];
+        return (isset(Settings::$plugin_db['modules'][self::$module][$item_name]))? Settings::$plugin_db['modules'][self::$module][$item_name]:null;
+
+    }
+
+
+    public static function get_company_email(){
+
+        $company_email = self::get_contact_module_item('company_email');
+
+        //if don`t set email at company form, than return site admin email;
+        return (!empty($company_email) )? $company_email : get_bloginfo('admin_email');//wp->panel->settings->general->Email_Address;
 
     }
 
