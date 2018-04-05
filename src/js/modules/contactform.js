@@ -196,7 +196,7 @@ class Contactform{
 
             output+='</ul>';
 
-            form_message_block.html(output);   //response message block are defined at html DOM; look; html form: ./views/contact-form.php
+            form_message_block.html(output).fadeOut(4000);   //response message block are defined at html DOM; look; html form: ./views/contact-form.php
 
         }
 
@@ -229,6 +229,7 @@ class Contactform{
             var msg_string = '<ul class="'+class_name+'"><li>'+message(type,name)+'</li></ul>';
 
             form_message_block.html(msg_string);   //response message block are defined at contact_form; look at html form: ./views/contact-form.php
+
 
         }
 
