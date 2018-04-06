@@ -11,14 +11,14 @@
 /*--------------------------------------------------------------
 # Partials
 --------------------------------------------------------------*/
-@import 'partials/typography';
-@import 'partials/buttons';
-@import 'partials/links';
-@import 'partials/colours';
-@import 'partials/helpers';
-@import 'partials/media';
+@import 'base/partials/typography';
+@import 'base/partials/buttons';
+@import 'base/partials/links';
+@import 'base/partials/colours';
+@import 'base/partials/helpers';
+@import 'base/partials/media';
 
 /*--------------------------------------------------------------
 # custom
 --------------------------------------------------------------*/
-@import 'custom/contact_form';
+@import 'plugin_front/contactform/contact_form';

@@ -17,17 +17,17 @@
 /*--------------------------------------------------------------
 # Partials
 --------------------------------------------------------------*/
-@import 'partials/typography';
-@import 'partials/buttons';
-@import 'partials/links';
-@import 'partials/colours';
-@import 'partials/helpers';
-@import 'partials/media';
+@import 'base/partials/typography';
+@import 'base/partials/buttons';
+@import 'base/partials/links';
+@import 'base/partials/colours';
+@import 'base/partials/helpers';
+@import 'base/partials/media';
 
 /*--------------------------------------------------------------
 # Pages
 --------------------------------------------------------------*/
-@import 'pages/general';
-@import 'pages/codearchitect';
-@import 'pages/settings';
-@import 'pages/cpt';
+@import 'plugin_admin/pages/general';
+@import 'plugin_admin/pages/codearchitect';
+@import 'plugin_admin/pages/settings';
+@import 'plugin_admin/pages/cpt';
