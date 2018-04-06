@@ -2,7 +2,9 @@ class Contactform{
     //file: header.php
 
     constructor(){
+
         this.init();
+
     }
 
     init(){
