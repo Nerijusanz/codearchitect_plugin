@@ -10,30 +10,25 @@ class Contactform{
     init(){
 
         //STATIC VARIABLES
-        var form =  $('#awps-contact-form'); //take form object: ./views/contact-form.php
-        var form_message_block = $('.js-awps-contact-form-response-message'); //message block before form, show response messages
+        var ajaxurl = ca_localize.ajaxurl;  //plugin localize settings
+
+        var form =  $('#ca-contact-form'); //take form object: ./views/contact-form.php
+        var form_message_block = $('.js-ca-contact-form-response-message'); //message block before form, show response messages
+        var el_name = '.js-ca-contact-name';
+        var el_email = '.js-ca-contact-email';
+        var el_message = '.js-ca-contact-message';
 
         //DYNAMIC VARIABLES
-        var ajaxurl,fld_name,fld_email,fld_message;
+         var fld_name = form.find( el_name );  //form input field 'name'
+         var fld_email = form.find( el_email );    //form input field 'email'
+         var fld_message = form.find( el_message );    //form input textarea 'message'
 
-        //note: catch dynamic form data;
-        function form_refresh_data(){
-
-            form.find('.form-control').removeClass('js-field-error'); //remove from input field error classes: "border red";
-            form.find('.js-form-control-msg').remove();// remove before input field added validation messages from HTML DOM
-
-            ajaxurl = form.data('url');//get wp ajax url, defined at html form data-ajaxurl;
-            fld_name = form.find('.js-awps-contact-name');  //form input field 'name'
-            fld_email = form.find('.js-awps-contact-email');    //form input field 'email'
-            fld_message = form.find('.js-awps-contact-message');    //form input textarea 'message'
-
-        }
 
 
         form.on('submit',function(e){
             e.preventDefault();
 
-            form_refresh_data();//IMPORTANT!!! every time on clicked form call to refresh form data again;
+            form_refresh_data();//IMPORTANT!!! every time on clicked form call to refresh form data again; removes errors;
 
             //get wp ajax url, defined at html form data-ajaxurl;
             if(typeof ajaxurl ==='undefined' || ajaxurl=='') return;   //make validation: if ajax url exists, if not STOP code; form can`t do ajax call;
@@ -46,7 +41,7 @@ class Contactform{
             if( make_input_validation() == false ) { //if validation return false, that`s mean occurs error on validation process;
 
                 //grecaptcha.reset(); //IMPORTANT!!! add google recaptcha at start position "not clicked";
-                make_response_message('validation');    //add validation message into HTML DOM: "form_message_block"->.js-awps-contact-form-response-message
+                make_response_message('validation');    //add validation message into HTML DOM: "form_message_block"->.js-ca-contact-form-response-message
                 make_input_disable(false); //make active all inputs and submit button.
                 return;//STOP CODE !!! VALIDATION ERROR!!!
 
@@ -59,6 +54,17 @@ class Contactform{
         });//form.submit
 
 
+
+        function form_refresh_data(){
+            //note: catch dynamic form data;
+            form.find('.form-control').removeClass('js-field-error'); //remove from input field error classes: "border red";
+            form.find('.js-form-control-msg').remove();// remove before input field added validation messages from HTML DOM
+
+            fld_name = form.find( el_name );  //form input field 'name'
+            fld_email = form.find( el_email );    //form input field 'email'
+            fld_message = form.find( el_message );    //form input textarea 'message'
+
+        }
 
 
         function make_ajax_contact_form(){
@@ -83,8 +89,7 @@ class Contactform{
                 },
                 success:function(response){
 
-                    var data  = JSON.parse(response);
-                    //console.log(data);    //show ajax resposne data structure in console; for testing purpose;
+                    var data  = JSON.parse(response);   //response json encoded json format. make decode;
 
                     var status = data.contact_status;	//1 or 0;
                     var message = data.contact_message; //get server-side messages list;
@@ -129,10 +134,11 @@ class Contactform{
             }
 
 
-            if(ValidateEmail(email_val)===false ){   //ValidateEmail() function look below
+            if( validateEmail(email_val) === false ){   //function validateEmail() function look below
                 validation_error = true;
                 make_validation_message(fld_email,'email');
             }
+
 
             if(email_val.length>255){
                 validation_error=true;
@@ -154,11 +160,11 @@ class Contactform{
         }
 
 
-        function ValidateEmail(email)
+        function validateEmail(email)
         {
             if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
             {
-                return true;//tested ok;
+                return true;//email tested ok;
             }
 
             return false;
@@ -172,29 +178,33 @@ class Contactform{
 
         function make_field_border_red(fields){//fields list coming from server-side ajax call, fields name indicate which fields got error on server-side validation, and need to add border red
 
-            if(fields.length < 1) return;   //field list empty;
+            if(fields.length > 0) {   //field list is not empty;
 
-            $.each(fields,function(index,field){
-                //for example: from server-side get input fields list which had error: name,email,message;
-                form.find('.js-awps-contact-'+field).addClass('js-field-error'); // generate: .js-awps-contact-name,.js-awps-contact-email,.js-contact-message;
+                $.each(fields, function (index, field) {
+                    //for example: from server-side get input fields list which had error: name,email,message;
+                    form.find('.js-ca-contact-' + field).addClass('js-field-error'); // generate: .js-ca-contact-name,.js-ca-contact-email,.js-contact-message;
 
-            });
+                });
+
+            }
 
         }
 
 
         function generate_response_message_list(messages,status){
 
-            if(messages.length < 1) return;  //message list empty;
-
             var msg_class_status = (status == 0)?'error':'success'; // class depend on server-side response_status: 0 or 1; different css styles; look at: .scss/custom/contact_form.scss
 
             var output='<ul class="'+msg_class_status+'">';
 
-            $.each(messages,function(index,msg){
+            if(messages.length > 0) {  //message list is not empty;
 
-                output+='<li>'+msg+'</li>';
-            });
+                $.each(messages, function (index, msg) {
+
+                    output += '<li>' + msg + '</li>';
+                });
+
+            }
 
             output+='</ul>';
 
@@ -270,6 +280,7 @@ class Contactform{
 
 
     }//init
+
 
 }
 
