@@ -87,6 +87,7 @@ class ContactformMessageCpt{
         //return $columns;
 
         $column = array();
+        $column['cb']='<input type="checkbox" />';
         $column['title'] = __('Name',PLUGIN_DOMAIN);  //replace field name 'title' into 'Name'
         $column['email'] = __('Email',PLUGIN_DOMAIN);
         $column['message'] = __('Message',PLUGIN_DOMAIN);
