@@ -104,8 +104,9 @@ class Settings {
 
 
     public static function localize_front_settings(){
+        //call front settings: ca_localize
+        self::$localize_front_settings_name = self::$prefix.'_localize';    //call: ca_localize
 
-        self::$localize_front_settings_name = strtoupper(self::$plugin.'_settings');    //call settings: CODEARCHITECT_SETTINGS
         //localization defined on: setup\Enqueue class
         self::$localize_front_settings = array(
             //'front_nonce_action'=>wp_create_nonce('front_nonce_field'),
