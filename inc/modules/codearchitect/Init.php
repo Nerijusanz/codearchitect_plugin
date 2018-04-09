@@ -4,7 +4,7 @@
  */
 
 namespace CA_Inc\modules\codearchitect;
-
+use CA_Inc\setup\Settings;
 
 class Init {
 
@@ -15,6 +15,9 @@ class Init {
     }
 
     public function init(){
+
+        if( !isset(Settings::$plugin_modules['codearchitect']))
+            return;
 
         new CodearchitectSetup();
         new CodearchitectModule();

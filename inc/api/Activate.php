@@ -14,16 +14,13 @@ class Activate{
 
         flush_rewrite_rules();
 
-        if ( !empty(Settings::$plugin_db) ) //make check if plugin db option are exists;
-            return;
+        if ( isset(Settings::$plugin_db) && !empty(Settings::$plugin_db) ) //make check if plugin db option are exists;
+            ModulesSetup::refresh_modules_list();
+        else    // The plugin db object option hasn't been created yet.
+            ModulesSetup::generate_default_modules_list();
 
-        // The plugin db object option hasn't been created yet.
 
-        $default=array();
 
-        $default = array_merge($default, ModulesSetup::generate_modules_list() );   //add default modules to db
-
-        update_option(Settings::$plugin_option, $default );//add default data to plugin db
 
     }
 

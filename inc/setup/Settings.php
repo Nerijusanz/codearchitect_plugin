@@ -52,8 +52,6 @@ class Settings {
         add_action( 'init', array($this,'plugin_load_textdomain') );    //important: load textdomain for localization and translating
         add_action('init',array(__CLASS__,'localize_front_settings'));  //localization defined on Enqueue class
 
-
-
     }
 
 
@@ -63,41 +61,54 @@ class Settings {
         self::$plugin_modules = array(
             'codearchitect'=>array(
                 'key'=>'codearchitect',
-                'title'=>'Codearchitect'
+                'title'=>'Codearchitect',
+                'activate'=>1   //important main module
             ),
             'settings' =>array(
                 'key'=>'settings',
-                'title'=>'Settings'
+                'title'=>'Settings',
+                'activate'=>0
             ),
             'contact' =>array(
                 'key'=>'contact',
-                'title'=>'Contact'
+                'title'=>'Contact',
+                'activate'=>0
             ),
             'contactform' =>array(
                 'key'=>'contactform',
-                'title'=>'Contact form'
+                'title'=>'Contact form',
+                'activate'=>0
             ),
             'cpt' =>array(
                 'key'=>'cpt',
-                'title'=>'Cpt'
+                'title'=>'Cpt',
+                'activate'=>0
+            ),
+            'gmap'=>array(
+                'key'=>'gmap',
+                'title'=>'Google map',
+                'activate'=>0
             ),
             'supports' =>array(
                 'key'=>'supports',
-                'title'=>'Supports'
+                'title'=>'Supports',
+                'activate'=>0
             ),
             'manager' =>array(
                 'key'=>'manager',
-                'title'=>'Manager'
+                'title'=>'Manager',
+                'activate'=>1   //important modules manager
             )//manager module: turn on/off other modules
         );
 
     }
 
+
     public static function init_plugin_db(){
         self::$plugin_db = get_option(self::$plugin_option); //get db object
     }
 
-    function plugin_load_textdomain() { //important: load textdomain for localization and translating
+    public function plugin_load_textdomain() { //important: load textdomain for localization and translating
         load_plugin_textdomain( PLUGIN_DOMAIN, false, self::$plugin . '/languages' );  //get dir 3 path below of main plugin directory
     }
 

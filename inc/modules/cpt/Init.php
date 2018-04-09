@@ -6,6 +6,7 @@
 namespace CA_Inc\modules\cpt;
 
 use CA_Inc\modules\api\ModulesSetup;
+use CA_Inc\setup\Settings;
 
 
 class Init {
@@ -16,6 +17,9 @@ class Init {
     }
 
     public function init(){
+
+        if( !isset(Settings::$plugin_modules['cpt']))
+            return;
 
         new CptSetup(); //initialize private cpt module params;
 

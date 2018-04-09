@@ -6,10 +6,14 @@
 namespace CA_Inc\modules\settings;
 
 use CA_Inc\modules\api\ModulesSetup;
+use CA_Inc\setup\Settings;
 
 class Init {
 
     public function __construct(){
+
+        if( !isset(Settings::$plugin_modules['settings']))
+            return;
 
         new SettingsSetup();
 
