@@ -5,7 +5,7 @@
 
 namespace CA_Inc\modules\contactform;
 
-use CA_Inc\modules\contact\ContactSetup;
+use CA_Inc\modules\contact;
 
 class ContactformMessageProcess {
 
@@ -21,9 +21,9 @@ class ContactformMessageProcess {
 
         $this->validation_error=false;  //make start validation status needle;
         self::$custom_post_type = ContactformMessageCpt::$custom_post_type;
-        self::$send_email_status = ContactformSetup::check_send_email_status(); //return true or false;
+        self::$send_email_status = Setup::check_send_email_status(); //return true or false;
 
-        self::$company_email = ContactSetup::get_company_email();
+        self::$company_email = contact\Setup::get_company_email();  //note: contact/Setup;
 
         //wordpress ajax making structure
         $awps_ajax_action_name = 'contactform_ajax';   //contact.js ajax send data parameter: action:'awps_contact_form';

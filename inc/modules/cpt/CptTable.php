@@ -32,10 +32,10 @@ class Table extends WP_List_Table
 
         parent::__construct();
 
-        self::$table_name = CptSetup::$module.'_table'; //prefix_table
-        self::$page = CptSetup::$module_slug;
-        self::$data = CptSetup::cpt_table_module_data();
-        self::$items_per_page = CptSetup::$cpt_table_per_page;
+        self::$table_name = Setup::$module.'_table'; //prefix_table
+        self::$page = Setup::$module_slug;
+        self::$data = Setup::cpt_table_module_data();
+        self::$items_per_page = Setup::$cpt_table_per_page;
     }
 
 

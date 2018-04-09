@@ -5,15 +5,15 @@
 
 namespace CA_Inc\modules\cpt\template\table;
 
-use CA_Inc\modules\cpt\CptSetup;
-use CA_Inc\modules\cpt\CptCallback;
+use CA_Inc\modules\cpt\Setup;
+use CA_Inc\modules\cpt\Callback;
 ?>
 
 <h2>Item edit</h2>
 
-<?php echo CptSetup::link_to_cpt_page();?>
+<?php echo Setup::link_to_cpt_page();?>
 
-<?php $module = CptSetup::$module;?>
+<?php $module = Setup::$module;?>
 
 <?php echo '<form method="post" action="'.admin_url('admin-post.php').'">';?>
 
@@ -21,7 +21,7 @@ use CA_Inc\modules\cpt\CptCallback;
 
     <?php echo '<input type="hidden" name="action" value="'.$module.'_module_form_edit" />';?>
 
-    <?php if(isset($cpt_module)) CptCallback::field_cpt_module_id($cpt_module['module_id']);?>
+    <?php if(isset($cpt_module)) Callback::field_cpt_module_id($cpt_module['module_id']);?>
 
     <table class="form-table">
 
@@ -34,12 +34,12 @@ use CA_Inc\modules\cpt\CptCallback;
 
             <tr>
                 <th scope="row"><?php _e('Singular name',PLUGIN_DOMAIN);?></th>
-                <td><?php if(isset($cpt_module)) CptCallback::field_singular_name( esc_attr($cpt_module['singular_name']));?></td>
+                <td><?php if(isset($cpt_module)) Callback::field_singular_name( esc_attr($cpt_module['singular_name']));?></td>
             </tr>
 
             <tr>
                 <th scope="row"><?php _e('Plural name',PLUGIN_DOMAIN);?></th>
-                <td><?php if(isset($cpt_module)) CptCallback::field_plural_name( esc_attr($cpt_module['plural_name']));?>
+                <td><?php if(isset($cpt_module)) Callback::field_plural_name( esc_attr($cpt_module['plural_name']));?>
                 </td>
             </tr>
 
@@ -47,7 +47,7 @@ use CA_Inc\modules\cpt\CptCallback;
                 <th scope="row"><?php _e('Public status',PLUGIN_DOMAIN);?></th>
                 <td><?php
                     $value = ( $cpt_module['public_status']==1)?1:0;
-                    CptCallback::field_public_status( esc_attr($value));
+                    Callback::field_public_status( esc_attr($value));
                     ?>
                 </td>
             </tr>
@@ -56,7 +56,7 @@ use CA_Inc\modules\cpt\CptCallback;
                 <th scope="row"><?php _e('Archive status',PLUGIN_DOMAIN);?></th>
                 <td><?php
                     $value = ($cpt_module['archive_status']==1)?1:0;
-                    CptCallback::field_archive_status( esc_attr($value));
+                    Callback::field_archive_status( esc_attr($value));
                     ?>
                 </td>
             </tr>

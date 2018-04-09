@@ -15,8 +15,8 @@ class Init {
             return;
 
         //init module
-        new ManagerSetup();
-        new ManagerModule();
+        new Setup();
+        new Module();
 
     }
 

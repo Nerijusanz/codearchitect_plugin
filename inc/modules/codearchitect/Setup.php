@@ -6,8 +6,9 @@
 namespace CA_Inc\modules\codearchitect;
 
 use CA_Inc\setup\Settings;
+use CA_Inc\modules\api\ModulesSetup;
 
-class CodearchitectSetup {
+class Setup {
 
     public static $module;
 
@@ -24,7 +25,7 @@ class CodearchitectSetup {
 
     public function __construct(){
 
-        self::$module = Settings::$plugin_modules['codearchitect']['key'];
+        self::$module = ModulesSetup::get_main_module_key();
 
         self::$module_slug = self::$module;
 

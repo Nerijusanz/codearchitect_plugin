@@ -6,24 +6,23 @@
 namespace CA_Inc\modules\cpt;
 
 use CA_Inc\setup\Settings;
+use CA_Inc\modules\api\ModulesSetup;
 
-
-class CptCallback
+class Callback
 {
-
 
 
     public static function template()
     {
-        CptSetup::cpt_main_page();
 
+        ModulesSetup::get_modules_page_template(Setup::$module);
 
     }
 
     //hidden field
     public static function field_cpt_module_id($value=''){
 
-        echo '<input type="hidden" name="'.Settings::$plugin_option.'['.CptSetup::$module.'][module][module_id]" value="'.esc_html($value).'" />';
+        echo '<input type="hidden" name="'.Settings::$plugin_option.'['.Setup::$module.'][module][module_id]" value="'.esc_html($value).'" />';
 
     }
 
@@ -37,7 +36,7 @@ class CptCallback
             'required'=>'required'
         );
 
-        echo '<input type="text" class="'.esc_attr($params['class']).'" name="'.Settings::$plugin_option.'['.CptSetup::$module.'][module][module_name]" value="'.esc_html($value).'" placeholder="'.esc_html($params['placeholder']).'" '.esc_attr($params['required']).' />';
+        echo '<input type="text" class="'.esc_attr($params['class']).'" name="'.Settings::$plugin_option.'['.Setup::$module.'][module][module_name]" value="'.esc_html($value).'" placeholder="'.esc_html($params['placeholder']).'" '.esc_attr($params['required']).' />';
 
     }
 
@@ -51,7 +50,7 @@ class CptCallback
         );
 
 
-        echo '<input type="text" class="'.esc_attr($params['class']).'" name="'.Settings::$plugin_option.'['.CptSetup::$module.'][module][singular_name]" value="'.esc_html($value).'" placeholder="'.esc_html($params['placeholder']).'" '.esc_attr($params['required']).' />';
+        echo '<input type="text" class="'.esc_attr($params['class']).'" name="'.Settings::$plugin_option.'['.Setup::$module.'][module][singular_name]" value="'.esc_html($value).'" placeholder="'.esc_html($params['placeholder']).'" '.esc_attr($params['required']).' />';
 
     }
 
@@ -64,7 +63,7 @@ class CptCallback
             'required'=>'required'
         );
 
-        echo '<input type="text" class="'.esc_attr($params['class']).'" name="'.Settings::$plugin_option.'['.CptSetup::$module.'][module][plural_name]" value="'.esc_html($value).'" placeholder="'.esc_html($params['placeholder']).'" '.esc_attr($params['required']).' />';
+        echo '<input type="text" class="'.esc_attr($params['class']).'" name="'.Settings::$plugin_option.'['.Setup::$module.'][module][plural_name]" value="'.esc_html($value).'" placeholder="'.esc_html($params['placeholder']).'" '.esc_attr($params['required']).' />';
 
     }
 
@@ -79,7 +78,7 @@ class CptCallback
 
         $output='<div class="form-check">';
         $output.='<label class="form-check-label" for="'.esc_attr($params['id']).'">';
-        $output.='<input type="checkbox" id="'.esc_attr($params['id']).'" name="'. Settings::$plugin_option.'['.CptSetup::$module.'][module][public_status]" class="form-check-input '.esc_attr($params['class']).'" value="'.esc_html($value).'" '.esc_attr($checked).' >';
+        $output.='<input type="checkbox" id="'.esc_attr($params['id']).'" name="'. Settings::$plugin_option.'['.Setup::$module.'][module][public_status]" class="form-check-input '.esc_attr($params['class']).'" value="'.esc_html($value).'" '.esc_attr($checked).' >';
         $output.= '</label>';
         $output.='</div>';
 
@@ -98,7 +97,7 @@ class CptCallback
 
         $output='<div class="form-check">';
         $output.='<label class="form-check-label" for="'.esc_attr($params['id']).'">';
-        $output.='<input type="checkbox" id="'.esc_attr($params['id']).'" name="'. Settings::$plugin_option.'['.CptSetup::$module.'][module][archive_status]" class="form-check-input '.esc_attr($params['class']).'" value="'.esc_html($value).'" '.esc_attr($checked).' >';
+        $output.='<input type="checkbox" id="'.esc_attr($params['id']).'" name="'. Settings::$plugin_option.'['.Setup::$module.'][module][archive_status]" class="form-check-input '.esc_attr($params['class']).'" value="'.esc_html($value).'" '.esc_attr($checked).' >';
         $output.= '</label>';
         $output.='</div>';
 

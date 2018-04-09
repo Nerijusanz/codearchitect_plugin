@@ -8,7 +8,7 @@ namespace CA_Inc\modules\settings;
 use CA_Inc\setup\Settings;
 use CA_Inc\modules\api\ModulesSetup;
 
-class SettingsSetup {
+class Setup {
 
     public static $module;
 
@@ -25,11 +25,11 @@ class SettingsSetup {
 
         self::$module = Settings::$plugin_modules['settings']['key'];
 
-        self::$module_parent_slug= Settings::$plugin_modules['codearchitect']['key'];
+        self::$module_parent_slug = ModulesSetup::get_main_module_key();
 
         self::$module_slug = self::$module_parent_slug .'_'. self::$module;
 
-        self::$module_title=Settings::$plugin_modules['settings']['title']; //uppercase first letter
+        self::$module_title = Settings::$plugin_modules['settings']['title']; //uppercase first letter
 
         $post_action = self::$module.'_module_form_add';   //action defined at form hidden field: settings/template/settings.php
         add_action( 'admin_post_'.$post_action, array($this,'save_module_items') );
@@ -64,10 +64,10 @@ class SettingsSetup {
     //front-end checking function
     public static function make_check_site_shutdown_status(){  //usage: on page template header.php file; change template into content-site-shutdown.php
 
-       if(!isset(Settings::$plugin_db['modules'][SettingsSetup::$module]))
+       if(!isset(Settings::$plugin_db['modules'][self::$module]))
            return false;
 
-        $settings_module = Settings::$plugin_db['modules'][SettingsSetup::$module];
+        $settings_module = Settings::$plugin_db['modules'][self::$module];
 
         $site_shutdown_status = ( isset($settings_module['site_shutdown']) && $settings_module['site_shutdown'] == 1 )? true:false;
 

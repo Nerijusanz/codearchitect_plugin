@@ -15,13 +15,13 @@ class Init {
         if( !isset(Settings::$plugin_modules['settings']))
             return;
 
-        new SettingsSetup();
+        new Setup();
 
-        if( ModulesSetup::check_module_activation_status(SettingsSetup::$module) == false ) //if false stop load SettingsModule;
+        if( ModulesSetup::check_module_activation_status(Setup::$module) == false ) //if false stop load SettingsModule;
             return; //turn off module
 
         //init module
-        new SettingsModule();
+        new Module();
 
     }
 

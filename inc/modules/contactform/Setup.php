@@ -8,7 +8,7 @@ namespace CA_Inc\modules\contactform;
 use CA_Inc\setup\Settings;
 use CA_Inc\modules\api\ModulesSetup;
 
-class ContactformSetup {
+class Setup {
 
     public static $module;
 
@@ -25,7 +25,7 @@ class ContactformSetup {
 
         self::$module = Settings::$plugin_modules['contactform']['key'];
 
-        self::$module_parent_slug = Settings::$plugin_modules['codearchitect']['key'];
+        self::$module_parent_slug = ModulesSetup::get_main_module_key();
 
         self::$module_slug = self::$module_parent_slug .'_'. self::$module;
 

@@ -8,7 +8,7 @@ namespace CA_Inc\modules\contact;
 use CA_Inc\setup\Settings;
 use CA_Inc\modules\api\ModulesSetup;
 
-class ContactSetup {
+class Setup {
 
     public static $module;
 
@@ -27,7 +27,7 @@ class ContactSetup {
 
         self::$module = Settings::$plugin_modules['contact']['key'];
 
-        self::$module_parent_slug = Settings::$plugin_modules['codearchitect']['key'];
+        self::$module_parent_slug = ModulesSetup::get_main_module_key();
 
         self::$module_slug = self::$module_parent_slug .'_'. self::$module;
 

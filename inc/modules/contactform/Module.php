@@ -7,7 +7,8 @@ namespace CA_Inc\modules\contactform;
 
 use CA_Inc\modules\api\ModulesApi;
 
-class ContactformModule {
+
+class Module {
 
     public function __construct()
     {
@@ -32,12 +33,12 @@ class ContactformModule {
 
         $admin_subpages = array(
             array(
-                'parent_slug' => ContactformSetup::$module_parent_slug,
-                'page_title' => __(ContactformSetup::$module_title,PLUGIN_DOMAIN),
-                'menu_title' => __(ContactformSetup::$module_title,PLUGIN_DOMAIN),
-                'capability' => ContactformSetup::$module_capability,
-                'menu_slug' => ContactformSetup::$module_slug,  //note: menu_slug on first admin subpage have to be same parent menu_slug;
-                'callback' => function(){ContactformCallback::template();}
+                'parent_slug' => Setup::$module_parent_slug,
+                'page_title' => __(Setup::$module_title,PLUGIN_DOMAIN),
+                'menu_title' => __(Setup::$module_title,PLUGIN_DOMAIN),
+                'capability' => Setup::$module_capability,
+                'menu_slug' => Setup::$module_slug,  //note: menu_slug on first admin subpage have to be same parent menu_slug;
+                'callback' => function(){Callback::template();}
             )
         );
 
@@ -51,9 +52,9 @@ class ContactformModule {
 
         $sections = array(
             array(
-                'id' => ContactformSetup::$module_slug . '_index', //structure: plugin_page.'_index';
+                'id' => Setup::$module_slug . '_index', //structure: plugin_page.'_index';
                 'title' => '',
-                'page' => ContactformSetup::$module_slug
+                'page' => Setup::$module_slug
             )
         );
 
@@ -69,17 +70,17 @@ class ContactformModule {
             array(
                 'id' => 'contact_form_activate_deactivate',
                 'title' => __('Contact Form activate/deactivate',PLUGIN_DOMAIN),    //localization
-                'page' => ContactformSetup::$module_slug,
-                'section' => ContactformSetup::$module_slug . '_index',
-                'callback' => function(){ContactformCallback::field_contact_form_activate_deactivate();}
+                'page' => Setup::$module_slug,
+                'section' => Setup::$module_slug . '_index',
+                'callback' => function(){Callback::field_contact_form_activate_deactivate();}
 
             ),
             array(
                 'id' => 'contact_form_send_email',
                 'title' => __('Contact send email',PLUGIN_DOMAIN),    //localization
-                'page' => ContactformSetup::$module_slug,
-                'section' => ContactformSetup::$module_slug . '_index',
-                'callback' => function(){ContactformCallback::field_contact_form_send_email();}
+                'page' => Setup::$module_slug,
+                'section' => Setup::$module_slug . '_index',
+                'callback' => function(){Callback::field_contact_form_send_email();}
 
             )
         );

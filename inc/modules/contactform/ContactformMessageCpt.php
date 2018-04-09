@@ -146,7 +146,7 @@ class ContactformMessageCpt{
                 <tr>
                     <th scope="row"><?php _e('User email:',PLUGIN_DOMAIN);?></th>
                     <td>
-                        <?php echo '<input type="text" name="'.Settings::$plugin.'[modules]['.ContactformSetup::$module.'][custom_post_type]['.self::$custom_post_type.'][user_email]" value="'.esc_attr($user_email).'" placeholder="'.__('user email',PLUGIN_DOMAIN).'" />';?>
+                        <?php echo '<input type="text" name="'.Settings::$plugin.'[modules]['.Setup::$module.'][custom_post_type]['.self::$custom_post_type.'][user_email]" value="'.esc_attr($user_email).'" placeholder="'.__('user email',PLUGIN_DOMAIN).'" />';?>
                     </td>
                 </tr>
 
@@ -183,7 +183,7 @@ class ContactformMessageCpt{
 
         if(isset($_POST[Settings::$plugin][self::$custom_post_type]['user_email'])){
 
-            $user_email = sanitize_text_field( $_POST[Settings::$plugin]['modules'][ContactformSetup::$module]['custom_post_type'][self::$custom_post_type]['user_email'] );
+            $user_email = sanitize_text_field( $_POST[Settings::$plugin]['modules'][Setup::$module]['custom_post_type'][self::$custom_post_type]['user_email'] );
 
             update_post_meta($post_id,'user_email',$user_email);
         }

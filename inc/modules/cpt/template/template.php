@@ -6,7 +6,7 @@
 namespace CA_Inc\modules\cpt\template;
 
 use CA_Inc\modules\api\ModulesSetup;
-use CA_Inc\modules\cpt\CptSetup;
+use CA_Inc\modules\cpt\Setup;
 
 ?>
 
@@ -18,14 +18,14 @@ use CA_Inc\modules\cpt\CptSetup;
     <div class="wrap">
         <?php
         $title_txt = sprintf('%s %s',
-                        CptSetup::$module_title,
+                        Setup::$module_title,
                         __('module',PLUGIN_DOMAIN)  //localization
                     );
         ?>
 
         <h2><?php esc_html_e($title_txt);?></h2>
 
-        <?php CptSetup::render_template();?>
+        <?php Setup::render_template();?>
 
     </div><!--wrap-->
 

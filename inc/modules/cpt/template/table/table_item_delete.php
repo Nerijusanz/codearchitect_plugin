@@ -5,15 +5,15 @@
 
 namespace CA_Inc\modules\cpt\template\table;
 
-use CA_Inc\modules\cpt\CptSetup;
-use CA_Inc\modules\cpt\CptCallback;
+use CA_Inc\modules\cpt\Setup;
+use CA_Inc\modules\cpt\Callback;
 ?>
 
 <h2>Item delete</h2>
 
-<?php echo CptSetup::link_to_cpt_page();?>
+<?php echo Setup::link_to_cpt_page();?>
 
-    <?php $module = CptSetup::$module;?>
+    <?php $module = Setup::$module;?>
 
     <?php echo '<form method="post" action="'.admin_url('admin-post.php').'">';?>
 
@@ -21,7 +21,7 @@ use CA_Inc\modules\cpt\CptCallback;
 
     <?php echo '<input type="hidden" name="action" value="'.$module.'_module_form_delete" />';?>
 
-    <?php if(isset($cpt_module)) CptCallback::field_cpt_module_id( esc_attr($cpt_module['module_id']) ); ?>
+    <?php if(isset($cpt_module)) Callback::field_cpt_module_id( esc_attr($cpt_module['module_id']) ); ?>
 
     <table class="form-table">
 

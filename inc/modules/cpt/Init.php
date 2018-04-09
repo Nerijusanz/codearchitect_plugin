@@ -21,13 +21,13 @@ class Init {
         if( !isset(Settings::$plugin_modules['cpt']))
             return;
 
-        new CptSetup(); //initialize private cpt module params;
+        new Setup(); //initialize private cpt module params;
 
-        if( ModulesSetup::check_module_activation_status(CptSetup::$module) == false ) //if false - stop render CptModule;
+        if( ModulesSetup::check_module_activation_status(Setup::$module) == false ) //if false - stop render CptModule;
             return; //turn off module
 
         //init module
-        new CptModule();
+        new Module();
         new CptSlider();
 
     }

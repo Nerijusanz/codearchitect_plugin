@@ -6,14 +6,15 @@
 namespace CA_Inc\modules\manager;
 
 use CA_Inc\setup\Settings;
-use CA_Inc\modules\codearchitect\CodearchitectSetup;
+use CA_Inc\modules\api\ModulesSetup;
+use CA_Inc\modules\codearchitect;
 
-class ManagerCallback {
+class Callback {
 
 
     public static function template(){
 
-        require_once(Settings::$plugin_path . '/inc/modules/' . ManagerSetup::$module . '/template/' . ManagerSetup::$module .'.php');
+        ModulesSetup::get_modules_page_template(Setup::$module);
 
     }
 
@@ -31,7 +32,7 @@ class ManagerCallback {
                     $module = $plugin_module['key'];
                     $module_title = $plugin_module['title'];
 
-                    if($module == ManagerSetup::$module  || $module == CodearchitectSetup::$module ) continue; //skip modules loop on currents keys;
+                    if($module == Setup::$module  || $module == codearchitect\Setup::$module ) continue; //skip modules loop on currents keys;
                     //var_dump($plugin_option['modules'][$module]['activate']);
                     $check_status = ( isset(Settings::$plugin_db['modules'][ $module ]['activate']) && Settings::$plugin_db['modules'][ $module ]['activate'] == 1 )?'checked':'';
 

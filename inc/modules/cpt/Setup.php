@@ -8,7 +8,7 @@ namespace CA_Inc\modules\cpt;
 use CA_Inc\setup\Settings;
 use CA_Inc\modules\api\ModulesSetup;
 
-class CptSetup {
+class Setup {
 
     public static $module;
 
@@ -28,11 +28,11 @@ class CptSetup {
 
         self::$module = Settings::$plugin_modules['cpt']['key'];   //get module from modules list;
 
-        self::$module_title=Settings::$plugin_modules['cpt']['title']; //uppercase first letter
-
-        self::$module_parent_slug = Settings::$plugin_modules['codearchitect']['key']; //page parent slug
+        self::$module_parent_slug = ModulesSetup::get_main_module_key(); //page parent slug
 
         self::$module_slug = self::$module_parent_slug .'_'. self::$module; //module page slug
+
+        self::$module_title=Settings::$plugin_modules['cpt']['title']; //uppercase first letter
 
 
         $post_action = self::$module.'_module_form_add';    //action defined at form hidden field: cpt/template/table/table_item_add.php
@@ -150,12 +150,6 @@ class CptSetup {
         }
 
 
-    }
-
-
-    public static function cpt_main_page(){
-
-        require_once(Settings::$plugin_path . '/inc/modules/'.self::$module.'/template/cpt.php');
     }
 
 

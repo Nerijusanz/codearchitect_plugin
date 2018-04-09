@@ -19,8 +19,8 @@ class Init {
         if( !isset(Settings::$plugin_modules['codearchitect']))
             return;
 
-        new CodearchitectSetup();
-        new CodearchitectModule();
+        new Setup();
+        new Module();
 
     }
 

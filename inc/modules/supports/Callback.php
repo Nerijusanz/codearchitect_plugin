@@ -5,15 +5,15 @@
 
 namespace CA_Inc\modules\supports;
 
-use CA_Inc\setup\Settings;
+use CA_Inc\modules\api\ModulesSetup;
 
 
-class SupportsCallback {
+class Callback {
 
 
     public static function template(){
 
-        require_once(Settings::$plugin_path . '/inc/modules/' . SupportsSetup::$module . '/template/' . SupportsSetup::$module .'.php');
+        ModulesSetup::get_modules_page_template(Setup::$module);
 
     }
 

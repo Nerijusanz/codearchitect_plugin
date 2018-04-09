@@ -9,7 +9,7 @@ namespace CA_Inc\modules\supports;
 use CA_Inc\modules\api\ModulesApi;
 
 
-class SupportsModule {
+class Module {
 
 
     public function __construct()
@@ -35,12 +35,12 @@ class SupportsModule {
 
         $admin_subpages = array(
             array(
-                'parent_slug' => SupportsSetup::$module_parent_slug,
-                'page_title' => __(SupportsSetup::$module_title,PLUGIN_DOMAIN),
-                'menu_title' => __(SupportsSetup::$module_title,PLUGIN_DOMAIN),
-                'capability' => SupportsSetup::$module_capability,
-                'menu_slug' => SupportsSetup::$module_slug,  //note: menu_slug on first admin subpage have to be same parent menu_slug;
-                'callback' => function(){SupportsCallback::template();}
+                'parent_slug' => Setup::$module_parent_slug,
+                'page_title' => __(Setup::$module_title,PLUGIN_DOMAIN),
+                'menu_title' => __(Setup::$module_title,PLUGIN_DOMAIN),
+                'capability' => Setup::$module_capability,
+                'menu_slug' => Setup::$module_slug,  //note: menu_slug on first admin subpage have to be same parent menu_slug;
+                'callback' => function(){Callback::template();}
             )
         );
 
@@ -54,9 +54,9 @@ class SupportsModule {
 
         $sections = array(
             array(
-                'id' => SupportsSetup::$module_slug . '_index', //structure: plugin_page.'_index';
+                'id' => Setup::$module_slug . '_index', //structure: plugin_page.'_index';
                 'title' => '',
-                'page' => SupportsSetup::$module_slug
+                'page' => Setup::$module_slug
             )
         );
 
@@ -72,9 +72,9 @@ class SupportsModule {
             array(
                 'id' => 'supports',  //plugin_name+page+field_name;
                 'title' => __('supports',PLUGIN_DOMAIN),
-                'page' => SupportsSetup::$module_slug,
-                'section' => SupportsSetup::$module_slug . '_index',
-                'callback' => function(){SupportsCallback::field();}
+                'page' => Setup::$module_slug,
+                'section' => Setup::$module_slug . '_index',
+                'callback' => function(){Callback::field();}
             )
         );
 

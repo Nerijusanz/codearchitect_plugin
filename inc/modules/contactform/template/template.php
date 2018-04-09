@@ -5,7 +5,7 @@
 
 namespace CA_Inc\modules\contactform\template;
 
-use CA_Inc\modules\contactform\ContactformSetup;
+use CA_Inc\modules\contactform\Setup;
 use CA_Inc\modules\api\ModulesSetup;
 ?>
 
@@ -13,7 +13,7 @@ use CA_Inc\modules\api\ModulesSetup;
     <?php
     echo ModulesSetup::generate_modules_top_navigation();
 
-    $module = ContactformSetup::$module;
+    $module = Setup::$module;
 
     echo '<form method="post" action="'.admin_url('admin-post.php').'">';
 
@@ -21,7 +21,7 @@ use CA_Inc\modules\api\ModulesSetup;
 
     echo '<input type="hidden" name="action" value="'.$module.'_module_form_add" />';
 
-    do_settings_sections( ContactformSetup::$module_slug );
+    do_settings_sections( Setup::$module_slug );
 
     echo '<p><input type="submit" name="'.$module.'_module_form_add_submit" class="button button-primary" value="'.__('Save Changes',PLUGIN_DOMAIN).'" /></p>';
 

@@ -5,8 +5,8 @@
 namespace CA_Inc\modules\contact\template;
 
 use CA_Inc\modules\api\ModulesSetup;
-use CA_Inc\modules\contact\ContactSetup;
-use CA_Inc\modules\contact\ContactCallback;
+use CA_Inc\modules\contact\Setup;
+use CA_Inc\modules\contact\Callback;
 
 ?>
 
@@ -15,7 +15,7 @@ use CA_Inc\modules\contact\ContactCallback;
 <?php
     echo ModulesSetup::generate_modules_top_navigation();
 
-    $module = ContactSetup::$module;
+    $module = Setup::$module;
 
 
     printf('<h2>%s</h2>',
@@ -48,42 +48,42 @@ use CA_Inc\modules\contact\ContactCallback;
 
                     <tr>
                         <th scope="row"><?php _e('Company name',PLUGIN_DOMAIN);?></th>
-                        <td><?php ContactCallback::field_company_name();?></td>
+                        <td><?php Callback::field_company_name();?></td>
                     </tr>
 
                     <tr>
                         <th scope="row"><?php _e('Company Address',PLUGIN_DOMAIN);?></th>
-                        <td><?php ContactCallback::field_company_address();?></td>
+                        <td><?php Callback::field_company_address();?></td>
                     </tr>
 
                     <tr>
                         <th scope="row"><?php _e('Company code',PLUGIN_DOMAIN);?></th>
-                        <td><?php ContactCallback::field_company_code();?></td>
+                        <td><?php Callback::field_company_code();?></td>
                     </tr>
 
                     <tr>
                         <th scope="row"><?php printf(__('%s tax code',PLUGIN_DOMAIN),'PVM')?></th>
-                        <td><?php ContactCallback::field_company_pvm_code();?></td>
+                        <td><?php Callback::field_company_pvm_code();?></td>
                     </tr>
 
                     <tr>
                         <th scope="row"><?php _e('Company phone/fax',PLUGIN_DOMAIN);?></th>
-                        <td><?php ContactCallback::field_company_phone_fax();?></td>
+                        <td><?php Callback::field_company_phone_fax();?></td>
                     </tr>
 
                     <tr>
                         <th scope="row"><?php _e('Company mobile',PLUGIN_DOMAIN);?></th>
-                        <td><?php ContactCallback::field_company_mobile();?></td>
+                        <td><?php Callback::field_company_mobile();?></td>
                     </tr>
 
                     <tr>
                         <th scope="row"><?php _e('Company email',PLUGIN_DOMAIN);?></th>
-                        <td><?php ContactCallback::field_company_email();?></td>
+                        <td><?php Callback::field_company_email();?></td>
                     </tr>
 
                     <tr>
                         <th scope="row"><?php _e('Company working hours',PLUGIN_DOMAIN);?></th>
-                        <td><?php ContactCallback::field_company_working_hours();?></td>
+                        <td><?php Callback::field_company_working_hours();?></td>
                     </tr>
 
                 </tbody>
@@ -100,27 +100,27 @@ use CA_Inc\modules\contact\ContactCallback;
 
                     <tr>
                         <th scope="row"><?php _e('Bank name',PLUGIN_DOMAIN);?></th>
-                        <td><?php ContactCallback::field_bank_name();?></td>
+                        <td><?php Callback::field_bank_name();?></td>
                     </tr>
 
                     <tr>
                         <th scope="row"><?php _e('Bank address',PLUGIN_DOMAIN);?></th>
-                        <td><?php ContactCallback::field_bank_address();?></td>
+                        <td><?php Callback::field_bank_address();?></td>
                     </tr>
 
                     <tr>
                         <th scope="row"><?php _e('Bank code',PLUGIN_DOMAIN);?></th>
-                        <td><?php ContactCallback::field_bank_code();?></td>
+                        <td><?php Callback::field_bank_code();?></td>
                     </tr>
 
                     <tr>
                         <th scope="row"><?php printf(__('Bank %s code',PLUGIN_DOMAIN),'SWIFT/BIC')?></th>
-                        <td><?php ContactCallback::field_bank_swift_bic_code();?></td>
+                        <td><?php Callback::field_bank_swift_bic_code();?></td>
                     </tr>
 
                     <tr>
                         <th scope="row"><?php _e('Bank account number',PLUGIN_DOMAIN);?></th>
-                        <td><?php ContactCallback::field_bank_account_number();?></td>
+                        <td><?php Callback::field_bank_account_number();?></td>
                     </tr>
 
                 </tbody>

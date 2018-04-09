@@ -15,13 +15,13 @@ class Init {
         if( !isset(Settings::$plugin_modules['supports']))
             return;
 
-        new SupportsSetup();
+        new Setup();
 
-        if( ModulesSetup::check_module_activation_status(SupportsSetup::$module) == false ) //if false stop load SupportModule;
+        if( ModulesSetup::check_module_activation_status(Setup::$module) == false ) //if false stop load SupportModule;
             return; //turn off module
 
         //init module
-        new SupportsModule();
+        new Module();
     }
 
 } 

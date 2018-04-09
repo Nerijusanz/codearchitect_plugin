@@ -5,12 +5,12 @@
 
 namespace CA_Inc\setup;
 
-use CA_Inc\modules\codearchitect\CodearchitectSetup;
+use CA_Inc\modules\codearchitect;
 
 class Enqueue {
 
-
 	public function __construct() {
+
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue' ) );     //for back-end
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_enqueue' ) );   //for front-end
@@ -27,7 +27,9 @@ class Enqueue {
 
         $page_prefix = $page[0]; //use first exploded param;
 
-        if( $pagenow == 'admin.php' && $page_prefix == CodearchitectSetup::$module )   //make check if: admin.php?page=codearchitect
+
+
+        if( $pagenow == 'admin.php' && $page_prefix == codearchitect\Setup::$module )   //make check if: admin.php?page=codearchitect
             return true;
 
 

@@ -15,12 +15,12 @@ class Init {
         if( !isset(Settings::$plugin_modules['contactform']))
             return;
 
-        new ContactformSetup();
+        new Setup();
 
-        if( ModulesSetup::check_module_activation_status( ContactformSetup::$module ) == false ) //if false - stop render ContactModule;
+        if( ModulesSetup::check_module_activation_status( Setup::$module ) == false ) //if false - stop render ContactModule;
             return;
 
-        new ContactformModule();    //init ContactModule
+        new Module();    //init ContactModule
         new ContactformMessageCpt(); //custom post type
         new ContactformMessageProcess(); //process contact form data
     }

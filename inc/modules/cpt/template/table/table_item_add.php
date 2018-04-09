@@ -5,12 +5,12 @@
 
 namespace Inc\modules\cpt\template\table;
 
-use CA_Inc\modules\cpt\CptSetup;
+use CA_Inc\modules\cpt\Setup;
 
 
-$module = CptSetup::$module;
+$module = Setup::$module;
 
-echo CptSetup::link_to_cpt_page();
+echo Setup::link_to_cpt_page();
 
 echo '<form method="post" action="'.admin_url('admin-post.php').'">';
 
@@ -18,7 +18,7 @@ echo '<form method="post" action="'.admin_url('admin-post.php').'">';
 
     echo '<input type="hidden" name="action" value="'.$module.'_module_form_add" />';
 
-    do_settings_sections( CptSetup::$module_slug );
+    do_settings_sections( Setup::$module_slug );
 
     echo '<p><input type="submit" name="'.$module.'_module_form_add_submit" class="button button-primary" value="'. __('Save Changes',PLUGIN_DOMAIN).'" /></p>';
 

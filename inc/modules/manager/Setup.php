@@ -7,9 +7,9 @@ namespace CA_Inc\modules\manager;
 
 use CA_Inc\setup\Settings;
 use CA_Inc\modules\api\ModulesSetup;
-use CA_Inc\modules\codearchitect\CodearchitectSetup;
+use CA_Inc\modules\codearchitect;
 
-class ManagerSetup {
+class Setup {
 
     public static $module;
 
@@ -26,11 +26,11 @@ class ManagerSetup {
 
         self::$module = Settings::$plugin_modules['manager']['key'];
 
-        self::$module_parent_slug= Settings::$plugin_modules['codearchitect']['key'];
+        self::$module_parent_slug = ModulesSetup::get_main_module_key();
 
         self::$module_slug = self::$module_parent_slug .'_'. self::$module;
 
-        self::$module_title=Settings::$plugin_modules['manager']['title']; //uppercase first letter
+        self::$module_title = Settings::$plugin_modules['manager']['title']; //uppercase first letter
         //save items
         $post_action = self::$module.'_module_form_add';   //action defined at form hidden field: manager/template/manager.php
         add_action( 'admin_post_'.$post_action, array($this,'save_module_items') );
@@ -51,7 +51,7 @@ class ManagerSetup {
 
             foreach(Settings::$plugin_modules as $key => $val):
 
-                if($key == self::$module || $key == CodearchitectSetup::$module ) continue; //skip the loop; //manager module always should be turn on; It turn on/off other modules;
+                if($key == self::$module || $key == codearchitect\Setup::$module ) continue; //skip the loop; //manager module always should be turn on; It turn on/off other modules;
 
                 $activate = ( isset($_POST[Settings::$plugin_option]['modules'][$key]['activate']) && $_POST[Settings::$plugin_option]['modules'][$key]['activate'] == 1 )?1:0;
 

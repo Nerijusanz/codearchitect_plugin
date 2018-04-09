@@ -6,14 +6,25 @@
 namespace CA_Inc\modules\api;
 
 use CA_Inc\setup\Settings;
-use CA_Inc\modules\codearchitect\CodearchitectSetup;
-use CA_Inc\modules\manager\ManagerSetup;
+use CA_Inc\modules\codearchitect;
+
 
 
 
 
 class ModulesSetup {
 
+    public static function get_main_module_key(){
+
+        return Settings::$plugin_modules['codearchitect']['key'];
+
+    }
+
+    public static function get_modules_page_template($module){
+
+        require_once(Settings::$plugin_path . '/inc/modules/' . $module . '/template/template.php');
+
+    }
 
     public static function generate_id(){
 
@@ -152,7 +163,7 @@ class ModulesSetup {
 
                 if( isset(Settings::$plugin_db['modules'][$module]['activate']) && Settings::$plugin_db['modules'][$module]['activate'] == 1 ):
 
-                    $module_page = ($module == CodearchitectSetup::$module)? CodearchitectSetup::$module : Settings::$plugin.'_'.$module;   //structure: prefix_page;
+                    $module_page = ($module == codearchitect\Setup::$module )? codearchitect\Setup::$module : Settings::$plugin.'_'.$module;   //structure: prefix_page;
 
                     if($page == $module_page)   //if current show screen page == module page, unlink
                         $module_link_url=sprintf('<li><span>%s</span></li>',$module_title);

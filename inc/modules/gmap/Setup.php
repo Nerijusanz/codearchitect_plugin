@@ -3,11 +3,12 @@
  * @package Codearchitect
  */
 
-namespace CA_Inc\modules\supports;
+namespace CA_Inc\modules\gmap;
 
 use CA_Inc\setup\Settings;
+use CA_Inc\modules\api\ModulesSetup;
 
-class SupportsSetup {
+class Setup {
 
     public static $module;
 
@@ -22,15 +23,17 @@ class SupportsSetup {
 
     public function __construct(){
 
-        self::$module = Settings::$plugin_modules['supports']['key'];
+        self::$module = Settings::$plugin_modules['gmap']['key'];
 
-        self::$module_parent_slug = Settings::$plugin_modules['codearchitect']['key'];
+        self::$module_parent_slug = ModulesSetup::get_main_module_key();
 
         self::$module_slug = self::$module_parent_slug .'_'. self::$module;
 
-        self::$module_title=Settings::$plugin_modules['supports']['title']; //uppercase first letter
+        self::$module_title=Settings::$plugin_modules['gmap']['title']; //uppercase first letter
 
     }
+
+
 
 
 } 

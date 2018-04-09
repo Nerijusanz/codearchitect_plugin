@@ -5,12 +5,10 @@
 
 namespace CA_Inc\modules\manager;
 
-use CA_Inc\setup\Settings;
-use CA_Inc\modules\api\ModulesOptions;
 use CA_Inc\modules\api\ModulesApi;
 
 
-class ManagerModule {
+class Module {
 
 
     public function __construct()
@@ -33,12 +31,12 @@ class ManagerModule {
 
         $admin_subpages = array(
             array(
-                'parent_slug' => ManagerSetup::$module_parent_slug,
-                'page_title' => __(ManagerSetup::$module_title,PLUGIN_DOMAIN),
-                'menu_title' => __(ManagerSetup::$module_title,PLUGIN_DOMAIN),
-                'capability' => ManagerSetup::$module_capability,
-                'menu_slug' => ManagerSetup::$module_slug,
-                'callback' => function(){ManagerCallback::template();}
+                'parent_slug' => Setup::$module_parent_slug,
+                'page_title' => __(Setup::$module_title,PLUGIN_DOMAIN),
+                'menu_title' => __(Setup::$module_title,PLUGIN_DOMAIN),
+                'capability' => Setup::$module_capability,
+                'menu_slug' => Setup::$module_slug,
+                'callback' => function(){Callback::template();}
             )
         );
 
@@ -51,10 +49,10 @@ class ManagerModule {
 
         $sections=array(
             array(
-                'id' => ManagerSetup::$module_slug . '_index',    //important structure: plugin_page.'_index';
+                'id' => Setup::$module_slug . '_index',    //important structure: plugin_page.'_index';
                 'title' => '',//add localization
                 //'callback'=>''
-                'page' => ManagerSetup::$module_slug
+                'page' => Setup::$module_slug
             )
         );
 
@@ -69,9 +67,9 @@ class ManagerModule {
             array(
                 'id' => 'manager_list',
                 'title' => __('Manager',PLUGIN_DOMAIN),
-                'page' => ManagerSetup::$module_slug,
-                'section' => ManagerSetup::$module_slug . '_index',
-                'callback' => function(){ManagerCallback::field_modules_name();}
+                'page' => Setup::$module_slug,
+                'section' => Setup::$module_slug . '_index',
+                'callback' => function(){Callback::field_modules_name();}
             )
         );
 
