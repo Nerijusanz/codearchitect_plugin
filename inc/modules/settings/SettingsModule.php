@@ -44,7 +44,7 @@ class SettingsModule
                 'menu_title' => __(SettingsSetup::$module_title,PLUGIN_DOMAIN),
                 'capability' => SettingsSetup::$module_capability,
                 'menu_slug' => SettingsSetup::$module_slug,  //note: menu_slug on first admin subpage have to be same parent menu_slug;
-                'callback' => function(){SettingsCallback::settings();}
+                'callback' => function(){SettingsCallback::template();}
             )
         );
 

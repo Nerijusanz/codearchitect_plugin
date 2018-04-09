@@ -35,7 +35,7 @@ class CodearchitectModule {
                 'menu_title' => __(CodearchitectSetup::$module_title,PLUGIN_DOMAIN),
                 'capability' => CodearchitectSetup::$module_capability,
                 'menu_slug' => CodearchitectSetup::$module_slug,
-                'callback' => function(){CodearchitectCallback::codearchitect();},
+                'callback' => function(){CodearchitectCallback::template();},
                 'icon_url' => CodearchitectSetup::$module_icon,
                 'position' => CodearchitectSetup::$module_menu_position
             )

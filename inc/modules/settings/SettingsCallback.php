@@ -11,7 +11,7 @@ use CA_Inc\setup\Settings;
 class SettingsCallback {
 
 
-    public static function settings(){
+    public static function template(){
 
         require_once(Settings::$plugin_path . '/inc/modules/' . SettingsSetup::$module . '/template/' . SettingsSetup::$module .'.php');
 

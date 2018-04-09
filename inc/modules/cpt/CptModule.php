@@ -41,7 +41,7 @@ class CptModule
                 'menu_title' => __(CptSetup::$module_title,PLUGIN_DOMAIN),
                 'capability' => CptSetup::$module_capability,
                 'menu_slug' => CptSetup::$module_slug,  //note: menu_slug on first admin subpage have to be same parent menu_slug;
-                'callback' => function(){CptCallback::cpt();}
+                'callback' => function(){CptCallback::template();}
             )
         );
 

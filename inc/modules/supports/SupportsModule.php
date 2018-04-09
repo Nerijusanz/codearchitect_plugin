@@ -40,7 +40,7 @@ class SupportsModule {
                 'menu_title' => __(SupportsSetup::$module_title,PLUGIN_DOMAIN),
                 'capability' => SupportsSetup::$module_capability,
                 'menu_slug' => SupportsSetup::$module_slug,  //note: menu_slug on first admin subpage have to be same parent menu_slug;
-                'callback' => function(){SupportsCallback::supports();}
+                'callback' => function(){SupportsCallback::template();}
             )
         );
 

@@ -11,7 +11,7 @@ use CA_Inc\setup\Settings;
 class ContactCallback {
 
 
-    public static function contact(){
+    public static function template(){
 
         return require_once(Settings::$plugin_path . '/inc/modules/' . ContactSetup::$module . '/template/' . ContactSetup::$module .'.php');
 

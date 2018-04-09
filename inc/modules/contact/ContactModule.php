@@ -42,7 +42,7 @@ class ContactModule {
                 'menu_title' => __(ContactSetup::$module_title),
                 'capability' => ContactSetup::$module_capability,
                 'menu_slug' => ContactSetup::$module_slug,  //note: menu_slug on first admin subpage have to be same parent menu_slug;
-                'callback' => function(){ContactCallback::contact();}
+                'callback' => function(){ContactCallback::template();}
             )
         );
 

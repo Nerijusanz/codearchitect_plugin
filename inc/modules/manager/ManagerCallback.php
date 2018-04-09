@@ -11,7 +11,7 @@ use CA_Inc\modules\codearchitect\CodearchitectSetup;
 class ManagerCallback {
 
 
-    public static function manager(){
+    public static function template(){
 
         require_once(Settings::$plugin_path . '/inc/modules/' . ManagerSetup::$module . '/template/' . ManagerSetup::$module .'.php');
 

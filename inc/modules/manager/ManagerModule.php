@@ -38,7 +38,7 @@ class ManagerModule {
                 'menu_title' => __(ManagerSetup::$module_title,PLUGIN_DOMAIN),
                 'capability' => ManagerSetup::$module_capability,
                 'menu_slug' => ManagerSetup::$module_slug,
-                'callback' => function(){ManagerCallback::manager();}
+                'callback' => function(){ManagerCallback::template();}
             )
         );
 

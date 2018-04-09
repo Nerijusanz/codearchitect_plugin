@@ -4,8 +4,6 @@
  */
 namespace CA_Inc;
 
-
-use CA_Inc\setup\Settings;
 use CA_Inc\modules;
 final class Init    //setup final class - child classes can`t override or extend
 {
@@ -55,6 +53,7 @@ final class Init    //setup final class - child classes can`t override or extend
         new modules\contact\Init();
         new modules\contactform\Init();
         new modules\cpt\Init();
+        new modules\gmap\Init();
         new modules\supports\Init();
         new modules\manager\Init();
 

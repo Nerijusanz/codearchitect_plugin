@@ -9,7 +9,7 @@ use CA_Inc\setup\Settings;
 
 class ContactformCallback {
 
-    public static function contactform(){
+    public static function template(){
 
         require_once(Settings::$plugin_path . '/inc/modules/' . ContactformSetup::$module . '/template/' . ContactformSetup::$module .'.php');
 

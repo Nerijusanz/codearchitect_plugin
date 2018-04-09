@@ -37,7 +37,7 @@ class ContactformModule {
                 'menu_title' => __(ContactformSetup::$module_title,PLUGIN_DOMAIN),
                 'capability' => ContactformSetup::$module_capability,
                 'menu_slug' => ContactformSetup::$module_slug,  //note: menu_slug on first admin subpage have to be same parent menu_slug;
-                'callback' => function(){ContactformCallback::contactform();}
+                'callback' => function(){ContactformCallback::template();}
             )
         );
 

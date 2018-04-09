@@ -13,7 +13,7 @@ class CptCallback
 
 
 
-    public static function cpt()
+    public static function template()
     {
         CptSetup::cpt_main_page();
 
