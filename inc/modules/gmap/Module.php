@@ -68,14 +68,30 @@ class Module
     public function fields()
     {
         $fields=array(
-            /*array(
-                'id' => Setup::$module.'_site_shutdown',  //plugin_name+page+field_name;
-                'title' => __('Shutdown site',PLUGIN_DOMAIN),
+            array(
+                'id' => 'map_api_key',  //plugin_name+page+field_name;
+                'title' => __('api key',PLUGIN_DOMAIN),
                 'page' => Setup::$module_slug,
                 'section' => Setup::$module_slug . '_index',
-                'callback' => function(){SettingsCallback::field_site_shutdown();}
+                'callback' => function(){Callback::field_gmap_api_key();}
 
-            )*/
+            ),
+            array(
+                'id' => 'map_zoom',  //plugin_name+page+field_name;
+                'title' => __('map zoom',PLUGIN_DOMAIN),
+                'page' => Setup::$module_slug,
+                'section' => Setup::$module_slug . '_index',
+                'callback' => function(){Callback::field_gmap_zoom();}
+
+            ),
+            array(
+                'id' => 'map_center',  //plugin_name+page+field_name;
+                'title' => __('map center',PLUGIN_DOMAIN),
+                'page' => Setup::$module_slug,
+                'section' => Setup::$module_slug . '_index',
+                'callback' => function(){Callback::field_gmap_center_lat_lang();}
+
+            )
         );
 
         ModulesApi::add_fields($fields);

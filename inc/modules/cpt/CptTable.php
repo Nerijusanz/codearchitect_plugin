@@ -79,6 +79,7 @@ class Table extends WP_List_Table
 
         }
 
+
         $columns = $this->get_columns();
         $hidden = $this->get_hidden_columns();
         $sortable = $this->get_sortable_columns();
@@ -169,12 +170,12 @@ class Table extends WP_List_Table
 
 
 
-    /*protected function column_cb( $item ) {
+    protected function column_cb( $item ) {
         return sprintf(
             '<label class="screen-reader-text" for="cpt_module_id_' . $item['module_id'] . '">' . sprintf( __( 'Select %s' ), $item['module'] ) . '</label>'
             . "<input type='checkbox' name='ctp_modules[]' id='cpt_module_id_{$item['module_id']}' value='{$item['module_id']}' />"
         );
-    }*/
+    }
 
 
     function no_items() {
@@ -203,6 +204,41 @@ class Table extends WP_List_Table
             'module' => array('module',false)
         );*/
     }
+    /*
+    public function get_bulk_actions() {
+
+        return array(
+            'delete' => __( 'Delete', 'your-textdomain' ),
+            //'save'   => __( 'Save', 'your-textdomain' ),
+        );
+
+    }
+
+    public function process_bulk_action() {
+
+        // make security nonce check here!
+
+
+        $action = $this->current_action();
+
+        switch ( $action ) {
+
+            case 'delete':
+                wp_die( 'Delete something' );
+                break;
+
+            case 'save':
+                wp_die( 'Save something' );
+                break;
+
+            default:
+                // do nothing or something else
+                return;
+                break;
+        }
+
+        return;
+    }*/
 
 
     protected function column_action( $item ) {

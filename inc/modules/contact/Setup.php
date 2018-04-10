@@ -95,7 +95,7 @@ class Setup {
 
     public static function get_contact_module_item($item_name){
 
-        return (isset(Settings::$plugin_db['modules'][self::$module][$item_name]))? Settings::$plugin_db['modules'][self::$module][$item_name]:null;
+        return (isset(Settings::$plugin_db['modules'][self::$module][$item_name]))? sanitize_text_field(Settings::$plugin_db['modules'][self::$module][$item_name]):null;
 
     }
 

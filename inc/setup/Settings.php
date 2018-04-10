@@ -22,7 +22,7 @@ class Settings {
     public static $plugin_modules;  //plugin custom modules list;
 
     public static $localize_front_settings_name;    //wp_localize script activated on Enqueue class;
-    public static $localize_front_settings; //wp_localize script activated on Enqueue class;
+    public static $localize_front_settings=array(); //wp_localize script activated on Enqueue class;
 
 
     public function __construct(){
@@ -48,9 +48,10 @@ class Settings {
 
         $this->init_modules();
         $this->init_plugin_db();    //wp_options table: codearchitect_plugin
+        $this->localize_front_settings();
 
         add_action( 'init', array($this,'plugin_load_textdomain') );    //important: load textdomain for localization and translating
-        add_action('init',array(__CLASS__,'localize_front_settings'));  //localization defined on Enqueue class
+
 
     }
 

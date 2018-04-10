@@ -75,7 +75,7 @@ class CptSlider {
             'menu_position'      => 112,
             'taxonomies'         => array('category','post_tag'), //default wp taxonomies
             'exclude_from_search' => false,
-            'supports'           => array( 'title','thumbnail' ) //editor, author
+            'supports'           => array( 'title','editor','thumbnail' ) //editor, author
 
         );
 
