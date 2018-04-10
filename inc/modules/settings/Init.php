@@ -26,12 +26,12 @@ class Init {
         if( !isset(Settings::$plugin_modules[ self::$module ]))
             return;
 
+        new Setup();
 
         if( ModulesSetup::check_module_activation_status(self::$module) == false ) //if false stop load SettingsModule;
             return; //turn off module
 
         //init module
-        new Setup();
         new Module();
 
     }

@@ -33,7 +33,14 @@ class Setup {
 
     }
 
+    public static function gmap_front_template(){
 
+        if(ModulesSetup::check_module_activation_status(self::$module) == false)
+            return; //stop redering map
+
+        return '<div id="map"></div>';
+
+    }
 
 
 } 
