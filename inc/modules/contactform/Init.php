@@ -10,19 +10,34 @@ use CA_Inc\setup\Settings;
 
 class Init {
 
+    public static $module;
+
     public function __construct(){
 
-        if( !isset(Settings::$plugin_modules['contactform']))
-            return;
+        self::$module = 'contactform';    //setup/Settings::init_modules();
 
-        new Setup();
+        $this->init();
 
-        if( ModulesSetup::check_module_activation_status( Setup::$module ) == false ) //if false - stop render ContactModule;
-            return;
-
-        new Module();    //init ContactModule
-        new ContactformMessageCpt(); //custom post type
-        new ContactformMessageProcess(); //process contact form data
     }
 
-} 
+
+    public function init(){
+
+        if( !isset(Settings::$plugin_modules[ self::$module ]))
+            return;
+
+
+        if( ModulesSetup::check_module_activation_status(self::$module) == false ) //if false stop load SettingsModule;
+            return; //turn off module
+
+        //init module
+        new Setup();
+        new Module();
+        new ContactformMessageCpt(); //custom post type
+        new ContactformMessageProcess(); //process contact form data
+
+    }
+
+}
+
+

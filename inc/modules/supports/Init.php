@@ -5,23 +5,38 @@
 
 namespace CA_Inc\modules\supports;
 
-use CA_Inc\modules\api\ModulesSetup;
 use CA_Inc\setup\Settings;
+use CA_Inc\modules\api\ModulesSetup;
+
 
 class Init {
 
+    public static $module;
+
     public function __construct(){
 
-        if( !isset(Settings::$plugin_modules['supports']))
+        self::$module = 'supports';    //setup/Settings::init_modules();
+
+        $this->init();
+
+    }
+
+
+    public function init(){
+
+        if( !isset(Settings::$plugin_modules[ self::$module ]))
             return;
 
-        new Setup();
 
-        if( ModulesSetup::check_module_activation_status(Setup::$module) == false ) //if false stop load SupportModule;
+        if( ModulesSetup::check_module_activation_status(self::$module) == false ) //if false stop load SettingsModule;
             return; //turn off module
 
         //init module
+        new Setup();
         new Module();
+
     }
 
-} 
+}
+
+

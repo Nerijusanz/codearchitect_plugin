@@ -10,19 +10,32 @@ use CA_Inc\setup\Settings;
 
 class Init {
 
+    public static $module;
+
     public function __construct(){
 
-        if( !isset(Settings::$plugin_modules['gmap']))
+        self::$module = 'gmap';    //setup/Settings::init_modules();
+
+        $this->init();
+
+    }
+
+
+    public function init(){
+
+        if( !isset(Settings::$plugin_modules[ self::$module ]))
             return;
 
-        new Setup();
 
-        if( ModulesSetup::check_module_activation_status(Setup::$module) == false ) //if false stop load SettingsModule;
+        if( ModulesSetup::check_module_activation_status(self::$module) == false ) //if false stop load SettingsModule;
             return; //turn off module
 
         //init module
+        new Setup();
         new Module();
 
     }
 
-} 
+}
+
+
