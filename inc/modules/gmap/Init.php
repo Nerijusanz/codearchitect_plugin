@@ -8,6 +8,8 @@ namespace CA_Inc\modules\gmap;
 use CA_Inc\modules\api\ModulesSetup;
 use CA_Inc\setup\Settings;
 
+
+
 class Init {
 
     public static $module;
@@ -17,6 +19,8 @@ class Init {
         self::$module = 'gmap';    //setup/Settings::init_modules();
 
         $this->init();
+
+
 
     }
 
@@ -32,7 +36,9 @@ class Init {
             return; //turn off module
 
         //init module
+
         new Module();
+        new \CA_Inc\modules\gmap\table\Table();
 
     }
 

@@ -7,6 +7,9 @@ namespace CA_Inc\modules\gmap\template;
 
 use CA_Inc\modules\gmap\Setup;
 use CA_Inc\modules\api\ModulesSetup;
+use CA_Inc\modules\gmap\table\Table;
+
+
 ?>
 
 <div class="page">
@@ -14,18 +17,24 @@ use CA_Inc\modules\api\ModulesSetup;
 
     echo ModulesSetup::generate_modules_top_navigation();
 
-    $module = Setup::$module;
-
-    echo '<form method="post" action="'.admin_url('admin-post.php').'">';
-
-        wp_nonce_field($module.'_module_form_add_action',$module.'_module_form_add_nonce');
-
-        echo '<input type="hidden" name="action" value="'.$module.'_module_form_add" />';
-
-        do_settings_sections( Setup::$module_slug );
-
-        echo '<p><input type="submit" name="'.$module.'_module_form_add_submit" class="button button-primary" value="'.__('Save Changes',PLUGIN_DOMAIN).'" /></p>';
-
-    echo '</form>';
     ?>
+
+    <div class="wrap">
+        <?php
+        $title_txt = sprintf('%s %s',
+            Setup::$module_title,
+            __('module',PLUGIN_DOMAIN)  //localization
+        );
+        ?>
+
+        <h2><?php esc_html_e($title_txt);?></h2>
+
+        <div class="list-table">
+            <?php Table::render_table_template(); ?>
+        </div>
+
+
+    </div><!--wrap-->
+
 </div>
+

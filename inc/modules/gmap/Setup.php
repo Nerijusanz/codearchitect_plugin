@@ -8,6 +8,8 @@ namespace CA_Inc\modules\gmap;
 use CA_Inc\setup\Settings;
 use CA_Inc\modules\api\ModulesSetup;
 
+use CA_Inc\modules\gmap\table\ListTableProcess;
+
 class Setup {
 
     public static $module;
@@ -109,11 +111,66 @@ class Setup {
 
 
     public static function gmap_front_template(){
-
+        //note:: add this function on template;  echo gmap_front_template();
         if(ModulesSetup::check_module_activation_status(self::$module) == false)
             return; //stop redering map
 
         return '<div id="map"></div>';
+
+    }
+
+
+
+    /*****************TABLE PROCESS***********************/
+
+    public static function table_module_data(){
+
+        return array(
+            array(
+                'id'=>1,
+                'title'=>'location1',
+                'lat'=>'lat1',
+                'long'=>'long1'
+            ),
+            array(
+                'id'=>2,
+                'title'=>'location2',
+                'lat'=>'lat2',
+                'long'=>'long2'
+            )
+        );
+
+    }
+
+    public static function table_items_per_page(){
+
+        return 10;
+
+    }
+
+
+    public static function get_module_by_id($id){ //usage for templates: edit, delete data by id: function CptSetup::cpt_table_item_edit_template($id), CptSetup::cpt_table_item_delete_template($id);
+
+       /*$module=array();
+
+        $id = preg_replace('#[^0-9]#','',$id);   //make id filter: only digits 0-9 allow
+
+        if($id == '') return $module; //make check id param after filter validation, if id param empty: return empty module array;
+
+        if( isset(Settings::$plugin_db['modules'][self::$module]['modules']) ):   //if cpt modules list not empty;
+
+            foreach(Settings::$plugin_db['modules'][self::$module]['modules'] as $cpt_module):
+
+                if($cpt_module['module_id'] == $id) {
+                    $module=$cpt_module;
+                    break;
+                }
+            endforeach;
+
+        endif;
+
+        return $module;*/
+
 
     }
 
