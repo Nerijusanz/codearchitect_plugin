@@ -7,13 +7,13 @@ use CA_Inc\modules\gmap\table\TableSetup;
 
 echo TableSetup::page_link();
 
-$table_name = TableSetup::$table_name;
+$table = TableSetup::$table;
 
 echo '<form method="post" action="'.admin_url('admin-post.php').'">';
 
-    wp_nonce_field($table_name.'_add_action',$table_name.'_add_nonce');
+    wp_nonce_field($table.'_add_action',$table.'_add_nonce');
 
-    echo '<input type="hidden" name="action" value="'.$table_name.'_form_add" />';?>
+    echo '<input type="hidden" name="action" value="'.$table.'_form_add" />';?>
 
         <table class="form-table">
 
@@ -38,7 +38,7 @@ echo '<form method="post" action="'.admin_url('admin-post.php').'">';
 
         </table>
     <?php
-    echo '<p><input type="submit" name="'.$table_name.'form_add_submit" class="button button-primary" value="'. __('Save Changes',PLUGIN_DOMAIN).'" /></p>';
+    echo '<p><input type="submit" name="'.$table.'_form_add_submit" class="button button-primary" value="'. __('Save Changes',PLUGIN_DOMAIN).'" /></p>';
 
 echo '</form>';
 

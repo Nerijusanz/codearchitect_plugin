@@ -11,13 +11,13 @@ use CA_Inc\modules\gmap\table\TableSetup;
 
 <?php echo TableSetup::page_link();?>
 
-<?php $table_name = TableSetup::$table_name;?>
+<?php $table = TableSetup::$table;?>
 
 <?php echo '<form method="post" action="'.admin_url('admin-post.php').'">';?>
 
-    <?php wp_nonce_field($table_name.'_edit_action',$table_name.'_edit_nonce');?>
+    <?php wp_nonce_field($table.'_edit_action',$table.'_edit_nonce');?>
 
-    <?php echo '<input type="hidden" name="action" value="'.$table_name.'_form_edit" />';?>
+    <?php echo '<input type="hidden" name="action" value="'.$table.'_form_edit" />';?>
 
     <?php echo TableSetup::field_item_id($item['id']);?>
 
@@ -45,6 +45,6 @@ use CA_Inc\modules\gmap\table\TableSetup;
 
     </table>
 
-    <?php echo '<p><input type="submit" name="'.$table_name.'_form_edit_submit" class="button button-primary" value="'. __('Save Changes',PLUGIN_DOMAIN).'" /></p>';?>
+    <?php echo '<p><input type="submit" name="'.$table.'_form_edit_submit" class="button button-primary" value="'. __('Save Changes',PLUGIN_DOMAIN).'" /></p>';?>
 
 </form>

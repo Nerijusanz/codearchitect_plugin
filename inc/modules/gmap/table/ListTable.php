@@ -6,13 +6,11 @@ namespace CA_Inc\modules\gmap\table;
 
 use CA_Inc\library\WP_List_Table\WP_List_Table;
 
-use CA_Inc\modules\gmap\Setup;
-
 
 class ListTable extends WP_List_Table
 {
 
-    public static $table_name;  //unique table name
+    public static $table;  //unique table name
     public static $page;    //module page
     public static $data;    //module data
     public static $items_per_page;  //for pagination
@@ -24,7 +22,7 @@ class ListTable extends WP_List_Table
 
         parent::__construct();
 
-        self::$table_name = TableSetup::$table_name;
+        self::$table = TableSetup::$table;
         self::$page = TableSetup::$page;
         self::$data = TableSetup::$data;
         self::$items_per_page = TableSetup::$items_per_page;
@@ -53,7 +51,7 @@ class ListTable extends WP_List_Table
 
         echo '<form method="get">';
             echo '<input type="hidden" name="page" value="'.self::$page.'" />';
-            echo '<input type="hidden" name="search_action" value="'.self::$table_name.'" />';
+            echo '<input type="hidden" name="search_action" value="'.self::$table.'" />';
 
             $this->search_box('search','search');
 
@@ -70,7 +68,7 @@ class ListTable extends WP_List_Table
     {
 
         // check if table search form was submitted
-        if( isset($_GET['search_action']) && $_GET['search_action']== self::$table_name && isset($_GET['s']) ){
+        if( isset($_GET['search_action']) && $_GET['search_action']== self::$table && isset($_GET['s']) ){
 
             $search_key = sanitize_text_field($_GET['s']);
 

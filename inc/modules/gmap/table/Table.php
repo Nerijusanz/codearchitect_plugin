@@ -72,13 +72,10 @@ class Table
 
     public static function table_item_edit_template(){ //use: render_template()
 
-        $item_id = (isset($_GET['item_id']))?$_GET['item_id']:'';
 
-        $item_id = preg_replace('#[^0-9]#','',$item_id);
+        $id = (isset($_GET['item_id']))?$_GET['item_id']:null;
 
-        if($item_id == ''){ _e('item not exist',PLUGIN_DOMAIN); return;}    //check after filter if id param not empty;
-
-        $item = TableSetup::get_item_by_id( $item_id );
+        $item = TableSetup::get_table_item_by_id($id);
 
         if(count($item) < 1){ _e('item not exist',PLUGIN_DOMAIN); return;} //if module not found by id, stop generate edit template;
 
@@ -90,15 +87,11 @@ class Table
     public static function table_item_delete_template(){    //use: render_template()
         
         //check module_id
-        $item_id = (isset($_GET['module_id']))?$_GET['module_id']:'';
+        $id = (isset($_GET['item_id']))?$_GET['item_id']:null;
 
-        $item_id = preg_replace('#[^0-9]#','',$item_id);
+        $item = TableSetup::get_table_item_by_id($id);
 
-        if($item_id == ''){ _e('item not exist',PLUGIN_DOMAIN); return;}    //check after filter if id param not empty;
-
-        $item = TableSetup::get_item_by_id($item_id);
-
-        if(count($item) < 1){ _e('item not exist',PLUGIN_DOMAIN); return;} //if module not found by id, stop generate delete template;
+        if(count($item) < 1){ _e('item not exist',PLUGIN_DOMAIN); return;} //if module not found by id, stop generate edit template;
 
         require_once('template/table_item_delete.php');
 
