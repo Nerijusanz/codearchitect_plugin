@@ -346,10 +346,12 @@ class Setup {
 
     }
 
-git
+
     public function delete_module_items(){
 
         if(isset($_POST['cpt_module_form_delete_submit'])){
+
+
 
             $nonce_action = self::$module.'_module_form_delete_action';
             $nonce_data = ( isset($_POST[self::$module.'_module_form_delete_nonce']) )? $_POST[self::$module.'_module_form_delete_nonce'] :'';
@@ -364,42 +366,37 @@ git
                 ModulesSetup::redirect_module_page(self::$module_slug);
 
 
+
             if( isset(Settings::$plugin_db['modules'][self::$module]['modules']) ):   //if cpt modules list not empty;
 
-                $index=0;   //module index on array list
+
+                $modules = Settings::$plugin_db['modules'][self::$module]['modules'];
+
+                $key  = array_search($module_id,array_column($modules,'module_id'));
+
+                if($key !== false):
+
+                    unset( Settings::$plugin_db['modules'][self::$module]['modules'][$key] ); //remove module by key;
+
+                    //note: regenerate modules list after delete module, and push to plugin db;
+
+                    $modules_list = array();
+
+                    foreach(Settings::$plugin_db['modules'][self::$module]['modules'] as $module):
+
+                        array_push($modules_list,$module);
+
+                    endforeach;
+
+                    Settings::$plugin_db['modules'][self::$module]['modules'] = $modules_list;
 
 
-                foreach(Settings::$plugin_db['modules'][self::$module]['modules'] as $cpt_module):
+                    update_option(Settings::$plugin_option,Settings::$plugin_db);
 
-                    if($cpt_module['module_id'] == $module_id) {    //find module on list
-
-
-                        unset( Settings::$plugin_db['modules'][self::$module]['modules'][$index] ); //remove module by current index;
-
-                        break;
-                    }
-
-                    $index++;
-
-                endforeach;
-
-                //note: regenerate modules list after delete module, and push to plugin db;
-
-                $modules_list = array();
-
-                foreach(Settings::$plugin_db['modules'][self::$module]['modules'] as $module):
-
-                    array_push($modules_list,$module);
-
-                endforeach;
-
-                Settings::$plugin_db['modules'][self::$module]['modules'] = $modules_list;
+                endif;
 
             endif;
-
-
-            update_option(Settings::$plugin_option,Settings::$plugin_db);
-
+            
             ModulesSetup::redirect_module_page(self::$module_slug);
 
         }
