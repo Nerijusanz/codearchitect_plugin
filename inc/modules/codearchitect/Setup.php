@@ -25,6 +25,7 @@ class Setup {
 
     public function __construct(){
 
+
         self::$module = ModulesSetup::get_main_module_key();
 
         self::$module_slug = self::$module;

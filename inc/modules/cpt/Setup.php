@@ -346,7 +346,7 @@ class Setup {
 
     }
 
-
+git
     public function delete_module_items(){
 
         if(isset($_POST['cpt_module_form_delete_submit'])){
