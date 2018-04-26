@@ -37,10 +37,9 @@ class Settings {
         self::$plugin = plugin_basename( dirname(__FILE__,3) );   //get dir 3 path below of main plugin basename
 
         define( 'PLUGIN_DOMAIN',self::$plugin);
-        define( 'WP_HOME', 'http://'.self::$plugin );
-        define( 'WP_SITEURL', 'http://'.self::$plugin );
 
-        self::$plugin_option = self::$plugin . '_plugin';    //generate plugin database option name: codearchitect_plugin
+
+        self::$plugin_option = self::$plugin . '_plugin';    //plugin dbs option name: codearchitect_plugin
 
         self::$plugin_init = self::$plugin . '/' . self::$plugin . '.php'; // usage: setup/Setup.php __construct()
         self::$plugin_url = plugin_dir_url( dirname(__FILE__,2) );  //get dirname 2 path below of main plugin directory

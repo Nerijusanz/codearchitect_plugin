@@ -32,21 +32,23 @@ class Table
     public static function render_table_template(){   //TEMPLATES CONTROLLER
 
 
-        if( isset($_GET['page']) && $_GET['page'] != self::$page )    //if accessing page isn`t module page, cancel code below;
+        if( isset($_GET['page']) && (filter_var($_GET['page'],FILTER_SANITIZE_URL) != self::$page) )    //if accessing page isn`t module page, cancel code below;
             return;
 
         if( isset($_GET['action']) ){
 
-            if($_GET['action']== 'table_add_new_item')
+            $action = filter_var($_GET['action'],FILTER_SANITIZE_URL);
+
+            if($action == 'table_add_new_item')
                 self::table_item_add_template();    //add template
 
-            if($_GET['action']=='table_row_edit' )
+            if($action == 'table_row_edit' )
                 self::table_item_edit_template();   //render edit template by module id param;
 
-            if($_GET['action']=='table_row_delete' )
+            if($action == 'table_row_delete' )
                 self::table_item_delete_template(); //render delete template by module id param;
 
-            if($_GET['action']=='table_all_items')
+            if($action == 'table_all_items')
                 self::table_view_template();
 
         }else{
@@ -73,7 +75,7 @@ class Table
     public static function table_item_edit_template(){ //use: render_template()
 
 
-        $id = (isset($_GET['item_id']))?$_GET['item_id']:null;
+        $id = (isset($_GET['item_id']))?filter_var($_GET['item_id'],FILTER_SANITIZE_URL):null;
 
         $item = TableSetup::get_table_item_by_id($id);
 
@@ -87,7 +89,7 @@ class Table
     public static function table_item_delete_template(){    //use: render_template()
         
         //check module_id
-        $id = (isset($_GET['item_id']))?$_GET['item_id']:null;
+        $id = (isset($_GET['item_id']))?filter_var($_GET['item_id'],FILTER_SANITIZE_URL):null;
 
         $item = TableSetup::get_table_item_by_id($id);
 

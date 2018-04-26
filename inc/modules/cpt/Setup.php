@@ -124,22 +124,24 @@ class Setup {
 
     public static function render_template(){   //TEMPLATES CONTROLLER
 
-        if( isset($_GET['page']) && $_GET['page'] != self::$module_slug )    //if accessing page isn`t module page, cancel code below;
+        if( isset($_GET['page']) && (filter_var($_GET['page'],FILTER_SANITIZE_URL) != self::$module_slug) )    //if accessing page isn`t module page, cancel code below;
             return;
 
 
         if( isset($_GET['action']) ){
 
-            if($_GET['action']== 'cpt_table_add_new_item')
+            $action = filter_var($_GET['action'],FILTER_SANITIZE_URL);
+
+            if($action == 'cpt_table_add_new_item')
                 self::cpt_table_item_add_template();    //add template
 
-            if($_GET['action']=='cpt_table_row_edit' )
+            if($action =='cpt_table_row_edit' )
                 self::cpt_table_item_edit_template();   //render edit template by module id param;
 
-            if($_GET['action']=='cpt_table_row_delete' )
+            if($action =='cpt_table_row_delete' )
                 self::cpt_table_item_delete_template(); //render delete template by module id param;
 
-            if($_GET['action']=='cpt_table_all_items')
+            if($action =='cpt_table_all_items')
                 self::cpt_table_view_template();
 
 
@@ -169,7 +171,7 @@ class Setup {
 
     public static function cpt_table_item_edit_template(){ //use: render_template()
 
-        $module_id = (isset($_GET['module_id']))?$_GET['module_id']:'';
+        $module_id = (isset($_GET['module_id']))?filter_var($_GET['module_id'],FILTER_SANITIZE_URL):'';
 
         $id = preg_replace('#[^0-9]#','',$module_id);
 
@@ -187,7 +189,7 @@ class Setup {
     public static function cpt_table_item_delete_template(){    //use: render_template()
 
         //check module_id
-        $module_id = (isset($_GET['module_id']))?$_GET['module_id']:'';
+        $module_id = (isset($_GET['module_id']))?filter_var($_GET['module_id'],FILTER_SANITIZE_URL):'';
 
         $id = preg_replace('#[^0-9]#','',$module_id);
 
@@ -199,7 +201,7 @@ class Setup {
 
 
         //check module_name
-        $module_name = (isset($_GET['module_name']))? esc_attr( $_GET['module_name'] ):'';
+        $module_name = (isset($_GET['module_name']))? filter_var($_GET['module_name'],FILTER_SANITIZE_URL):'';
 
         $args = array(
             'post_type'   => $module_name   //post_type by module_name

@@ -70,9 +70,9 @@ class Table extends WP_List_Table
     {
 
         // check if table search form was submitted
-        if( isset($_GET['search_action']) && $_GET['search_action']== self::$table_name && isset($_GET['s']) ){
+        if( isset($_GET['search_action']) && (filter_var($_GET['search_action'],FILTER_SANITIZE_URL)== self::$table_name) && isset($_GET['s']) ){
 
-            $search_key = sanitize_text_field($_GET['s']);
+            $search_key = filter_var($_GET['s'],FILTER_SANITIZE_URL);
 
             if($search_key !='')
                 self::$data = $this->make_search_filter_data( self::$data, $search_key );   //filter data by search key
@@ -244,7 +244,7 @@ class Table extends WP_List_Table
     protected function column_action( $item ) {
 
         $admin_url =  admin_url('admin.php');
-        $page = (isset($_GET['page']))? esc_attr($_GET['page']):'';
+        $page = (isset($_GET['page']))? filter_var($_GET['page'],FILTER_SANITIZE_URL):'';
         $module_id = $item['module_id'];    //column module_id
 
         $edit_link = sprintf('<a href="%s?page=%s&action=%s&module_id=%s">%s</a>',
@@ -278,7 +278,7 @@ class Table extends WP_List_Table
         if ( $which == "top" ){ //table top links;
 
             $admin_url =  admin_url('admin.php');
-            $page = (isset($_GET['page']))?esc_attr($_GET['page']):'';
+            $page = (isset($_GET['page']))?filter_var($_GET['page'],FILTER_SANITIZE_URL):'';
 
             $link_all = sprintf('<a href="%s?page=%s&action=%s">%s</a>',
                 $admin_url,
@@ -321,13 +321,13 @@ class Table extends WP_List_Table
         // If orderby is set, use this as the sort column
         if(!empty($_GET['orderby']))
         {
-            $orderby = $_GET['orderby'];
+            $orderby = filter_var($_GET['orderby'],FILTER_SANITIZE_URL);
         }
 
         // If order is set use this as the order
         if(!empty($_GET['order']))
         {
-            $order = $_GET['order'];
+            $order = filter_var($_GET['order'],FILTER_SANITIZE_URL);
         }
 
 

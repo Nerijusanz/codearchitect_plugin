@@ -115,9 +115,14 @@ class TableSetup {
 
     public static function page_link(){ //usage: cpt_table: add,edit,delete templates back to table list
 
+        $page = (isset($_GET['page']))?filter_var($_GET['page'],FILTER_SANITIZE_URL):null;
+
+        if($page == null)
+            return;
+
         return sprintf('<a href="%s?page=%s">&lt;&lt;&nbsp;%s</a>',
             admin_url('admin.php'),
-            $_GET['page'],// make validation
+            $page,
             __('back to list',PLUGIN_DOMAIN)
         );
 

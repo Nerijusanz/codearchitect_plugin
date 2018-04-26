@@ -151,8 +151,10 @@ class ModulesSetup {
 
     public static function generate_modules_top_navigation(){ //usage: module/template/{file};
 
-        $page = ( isset($_GET['page']))? esc_attr($_GET['page']):''; //get page name
+        $page = ( isset($_GET['page']))? filter_var($_GET['page'],FILTER_SANITIZE_URL):null; //get page name
 
+        if($page == null)
+            return;
 
         $output='<ul class="top-navigation">';
 
