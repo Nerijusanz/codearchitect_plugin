@@ -36,14 +36,53 @@ class Setup {
         $post_action = self::$module.'_module_form_add';   //action defined at form hidden field: contact/template/settings.php
         add_action( 'admin_post_'.$post_action, array($this,'save_module_items') );
 
-        self::localize_gmap_settings();
-
+        add_action('init',array($this,'localize_gmap_settings'));
 
 
     }
 
+    public static function gmap_front_template(){
+        //note:: add this function on template;  echo gmap_front_template();
+        if(ModulesSetup::check_module_activation_status(self::$module) == false)
+            return; //stop redering map
 
-    public function save_module_items(){
+        return '<div id="map"></div>';
+
+    }
+
+    public function gmap_frontend_enqueue(){
+
+        $src = 'https://maps.googleapis.com/maps/api/js?key='.self::get_gmap_module_item('api_key');
+        wp_enqueue_script( 'gmap-js', $src, array(),'', true );
+    }
+
+
+    public static function localize_gmap_settings(){
+
+        $items_fields_key = array('map_zoom','map_center_lat','map_center_long','locations');   //items fields keys which make localized
+
+        $localize_list=array();
+
+        foreach($items_fields_key as $key):
+
+            $localize_list['gmap'][$key] = self::get_gmap_module_item($key);
+
+        endforeach;
+
+        $localize_list = array_merge(Settings::$localize_front_settings,$localize_list);
+
+        Settings::$localize_front_settings = $localize_list;
+
+    }
+
+    public static function get_gmap_module_item($item_name){
+
+        return (isset(Settings::$plugin_db['modules'][self::$module][$item_name]))? Settings::$plugin_db['modules'][self::$module][$item_name]:null;
+
+    }
+
+
+    public function save_module_items(){    //gmap main submit btn
 
         //var_dump($_POST);exit;
 
@@ -55,20 +94,23 @@ class Setup {
             if ( !wp_verify_nonce( $nonce_data, $nonce_action ) )//wp nonce created at form hidden field;
                 ModulesSetup::redirect_module_page(self::$module_slug);
 
-            //validation
-            $api_key = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['api_key']) )? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['api_key']):'';
-            $map_zoom = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['map_zoom']) )? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['map_zoom']):'';
-            $map_center_title = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['map_center']['title']) )? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['map_center']['title']):'';
-            $map_center_lat = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['map_center']['lat']) )? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['map_center']['lat']):'';
-            $map_center_long = (isset($_POST[Settings::$plugin_option]['modules'][self::$module]['map_center']['long']) )? sanitize_text_field($_POST[Settings::$plugin_option]['modules'][self::$module]['map_center']['long']):'';
-            //add to db list
-            Settings::$plugin_db['modules'][self::$module]['api_key'] = $api_key;
-            Settings::$plugin_db['modules'][self::$module]['map_zoom'] = $map_zoom;
-            Settings::$plugin_db['modules'][self::$module]['map_center']['title'] = $map_center_title;
-            Settings::$plugin_db['modules'][self::$module]['map_center']['lat'] = $map_center_lat;
-            Settings::$plugin_db['modules'][self::$module]['map_center']['long'] = $map_center_long;
 
-            //save to db
+            //make check if post module exitst;
+            if(!isset($_POST[Settings::$plugin_option]['modules'][self::$module]))
+                ModulesSetup::redirect_module_page(self::$module_slug);
+
+            $post_module = $_POST[Settings::$plugin_option]['modules'][self::$module];  //post array
+
+            if(count($post_module)>0){  //make check if post array not empty
+
+                foreach($post_module as $key=>$value){  //get post array item key =>value;
+
+                    Settings::$plugin_db['modules'][self::$module][$key] = sanitize_text_field($value);
+
+                }
+
+            }
+
             update_option(Settings::$plugin_option,Settings::$plugin_db);
 
             //redirect
@@ -78,76 +120,43 @@ class Setup {
 
     }
 
-    public function gmap_frontend_enqueue(){
 
-        $src = 'https://maps.googleapis.com/maps/api/js?key='.self::get_gmap_module_item('api_key');
-        wp_enqueue_script( 'gmap-js', $src, array(),'', true );
-    }
-
-    public static function localize_gmap_settings(){
-
-        $gmap=array();
-        $gmap['gmap']['map_zoom'] = self::get_gmap_module_item('map_zoom');
-        $gmap['gmap']['map_center']['lat'] = self::get_gmap_module_map_center_item('lat');
-        $gmap['gmap']['map_center']['long'] = self::get_gmap_module_map_center_item('long');
-        $gmap['gmap']['locations'] = self::get_gmap_locations_items_list();
-
-        $gmap = array_merge(Settings::$localize_front_settings,$gmap);
-
-        Settings::$localize_front_settings = $gmap;
-
-    }
-
-    public static function get_gmap_locations_items_list(){
-
-        $locations  = (isset(Settings::$plugin_db['modules'][self::$module]['locations']))? Settings::$plugin_db['modules'][self::$module]['locations']:null;
-        return $locations;
-    }
-
-
-    public static function get_gmap_module_item($item_name){
-
-        return (isset(Settings::$plugin_db['modules'][self::$module][$item_name]))? sanitize_text_field(Settings::$plugin_db['modules'][self::$module][$item_name]):null;
-
-    }
-
-    public static function get_gmap_module_map_center_item($item_name){
-
-        return (isset(Settings::$plugin_db['modules'][self::$module]['map_center'][$item_name]))? sanitize_text_field(Settings::$plugin_db['modules'][self::$module]['map_center'][$item_name]):null;
-
-    }
-
-
-    public static function gmap_front_template(){
-        //note:: add this function on template;  echo gmap_front_template();
-        if(ModulesSetup::check_module_activation_status(self::$module) == false)
-            return; //stop redering map
-
-        return '<div id="map"></div>';
-
-    }
 
     /*****************TABLE PROCESS***********************/
 
     public static function module_locations_item_save($post_item){
 
-        $item = array();
-        $item['id'] = ModulesSetup::generate_id();   //generate unique id
-        $item['title'] = ( isset($post_item['title']) )? sanitize_text_field($post_item['title']):'';
-        $item['lat'] = ( isset($post_item['lat']) )? sanitize_text_field($post_item['lat']):'';
-        $item['long'] = ( isset($post_item['long']) )? sanitize_text_field($post_item['long']):'';
+        if(!isset($post_item['id']))
+            ModulesSetup::redirect_module_page(self::$module_slug);
 
-        $item_list=array();
+        $item_id = preg_replace('#[^0-9]#','',$post_item['id']);    //make id filter
+        //check after filter if item_id param not empty;
+        if(empty($item_id))    //if id param empty after validation, stop code below and redirect page;
+            ModulesSetup::redirect_module_page(self::$module_slug);
+
+        $item = array();
+
+        if(count($post_item)>0){
+
+            foreach($post_item as $key=>$value){
+
+                $item[$key] = ($key == 'id')? $item_id : sanitize_text_field($value);
+
+            }
+
+        }
+
 
         if( isset(Settings::$plugin_db['modules'][self::$module]['locations']) ) {    //if locations list not empty;
 
-            $item_list = Settings::$plugin_db['modules'][self::$module]['locations']; //first take locations from db and push to list;
-            array_push($item_list,$item);  //push new created module
+            $item_list = Settings::$plugin_db['modules'][self::$module]['locations']; //first take locations array from db;
+            array_push($item_list,$item);  //push new created item;
 
             Settings::$plugin_db['modules'][self::$module]['locations'] = $item_list;  //add fully generated locations list into db;
 
         }else{  //any locations are not created yet
-            array_push($item_list,$item);
+            $item_list=array(); //generate new array
+            array_push($item_list,$item);   //add new item into array
             Settings::$plugin_db['modules'][self::$module]['locations'] = $item_list; //add modules list into db
         }
 
@@ -157,41 +166,49 @@ class Setup {
 
     }
 
+
     public static function module_locations_item_edit($post_item){
 
+        if(!isset($post_item['id']))
+            ModulesSetup::redirect_module_page(self::$module_slug);
 
         $item_id = preg_replace('#[^0-9]#','',$post_item['id']);    //make id filter
         //check after filter if item_id param not empty;
-        if($item_id == '')    //if id param empty after validation, stop code below and redirect page;
+        if(empty($item_id))    //if id param empty after validation, stop code below and redirect page;
             ModulesSetup::redirect_module_page(self::$module_slug);
 
-        $item_title = ( isset($post_item['title']) )? sanitize_text_field( $post_item['title'] ):'';
-        $item_lat = ( isset($post_item['lat']) )? sanitize_text_field( $post_item['lat'] ):'';
-        $item_long = ( isset($post_item['long']) )? sanitize_text_field( $post_item['long'] ):'';
 
+        $item = array();
+
+        if(count($post_item)>0){
+
+            foreach($post_item as $key=>$value){
+
+                $item[$key] = ($key == 'id')?$item_id:sanitize_text_field($value);
+
+            }
+
+        }
 
         if( isset(Settings::$plugin_db['modules'][self::$module]['locations']) ):   //if locations list not empty;
 
-            $index=0;   //module array index
+            $locations = Settings::$plugin_db['modules'][self::$module]['locations'];
 
-            foreach(Settings::$plugin_db['modules'][self::$module]['locations'] as $item):
+            $key  = array_search($item['id'],array_column($locations,'id'));
 
-                if($item['id'] == $item_id) {
+            if($key !== false):
 
-                    Settings::$plugin_db['modules'][self::$module]['locations'][$index]['title'] = $item_title;
-                    Settings::$plugin_db['modules'][self::$module]['locations'][$index]['lat'] = $item_lat;
-                    Settings::$plugin_db['modules'][self::$module]['locations'][$index]['long'] = $item_long;
+                foreach($item as $item_key=>$item_value):
 
-                    break;
-                }
+                    Settings::$plugin_db['modules'][self::$module]['locations'][$key][$item_key] = $item_value;
 
-                $index++;
+                endforeach;
 
-            endforeach;
+                update_option(Settings::$plugin_option,Settings::$plugin_db);
+
+            endif;
 
         endif;
-
-        update_option(Settings::$plugin_option,Settings::$plugin_db);
 
         ModulesSetup::redirect_module_page(self::$module_slug);
 
@@ -201,46 +218,42 @@ class Setup {
 
     public static function module_locations_item_delete($id){
 
+        if(!isset($id))
+            ModulesSetup::redirect_module_page(self::$module_slug);
+
         $item_id = preg_replace('#[^0-9]#','',$id);    //make id filter
         //check after filter if item_id param not empty;
-        if($item_id == '')    //if id param empty after validation, stop code below and redirect page;
+        if(empty($item_id))    //if id param empty after validation, stop code below and redirect page;
             ModulesSetup::redirect_module_page(self::$module_slug);
 
 
-        if( isset(Settings::$plugin_db['modules'][self::$module]['locations']) ):   //if cpt modules list not empty;
+        if( isset(Settings::$plugin_db['modules'][self::$module]['locations']) ):   //if modules list not empty;
 
-            $index=0;   //module index on array list
+            $locations = Settings::$plugin_db['modules'][self::$module]['locations'];
 
+            $key  = array_search($item_id,array_column($locations,'id'));
 
-            foreach(Settings::$plugin_db['modules'][self::$module]['locations'] as $item):
+            if($key !== false):
 
-                if($item['id'] == $item_id) {    //find module on list
+                unset(Settings::$plugin_db['modules'][self::$module]['locations'][$key]);
 
+                //note: regenerate modules list after delete module, and push to plugin db;
 
-                    unset( Settings::$plugin_db['modules'][self::$module]['locations'][$index] ); //remove module by current index;
+                $items_list = array();
 
-                    break;
-                }
+                foreach(Settings::$plugin_db['modules'][self::$module]['locations'] as $item):
 
-                $index++;
+                    array_push($items_list,$item);
 
-            endforeach;
+                endforeach;
 
-            //note: regenerate modules list after delete module, and push to plugin db;
+                Settings::$plugin_db['modules'][self::$module]['locations'] = $items_list;
 
-            $items_list = array();
+                update_option(Settings::$plugin_option,Settings::$plugin_db);
 
-            foreach(Settings::$plugin_db['modules'][self::$module]['locations'] as $item):
-
-                array_push($items_list,$item);
-
-            endforeach;
-
-            Settings::$plugin_db['modules'][self::$module]['locations'] = $items_list;
+            endif;
 
         endif;
-
-        update_option(Settings::$plugin_option,Settings::$plugin_db);
 
         ModulesSetup::redirect_module_page(self::$module_slug);
 
@@ -253,15 +266,17 @@ class Setup {
 
         $item_list = array();
 
-        if( isset(Settings::$plugin_db['modules'][self::$module]['locations']) ):   //if cpt modules list not empty;
+        if( isset(Settings::$plugin_db['modules'][self::$module]['locations']) ):   //if locations list not empty;
 
-            foreach(Settings::$plugin_db['modules'][self::$module]['locations'] as $location):
+            $location_list = Settings::$plugin_db['modules'][self::$module]['locations'];
+
+            foreach($location_list as $item):
 
                 $items=array();
-                $items['id']=$location['id'];
-                $items['title']=$location['title'];
-                $items['lat']=$location['lat'];
-                $items['long']=$location['long'];
+
+                foreach($item as $key=>$value){ //take items key and value
+                    $items[$key]=$value;
+                }
 
                 array_push($item_list,$items);
 
@@ -276,21 +291,21 @@ class Setup {
 
     public static function module_locations_item_by_id($id){
 
+
         $items=array();
 
         $id = preg_replace('#[^0-9]#','',$id);   //make id filter: only digits 0-9 allow
 
-        if($id == '') return $items; //make check id param after filter validation, if id param empty: return empty module array;
+        if(empty($id)) return $items; //make check id param after filter validation, if id param empty: return empty module array;
 
         if( isset(Settings::$plugin_db['modules'][self::$module]['locations']) ):   //if cpt modules list not empty;
 
-            foreach(Settings::$plugin_db['modules'][self::$module]['locations'] as $item):
+            $locations = Settings::$plugin_db['modules'][self::$module]['locations'];
 
-                if($item['id'] == $id) {
-                    $items = $item;
-                    break;
-                }
-            endforeach;
+            $key  = array_search($id,array_column($locations,'id'));
+
+            if($key !== false)
+                $items = $locations[$key];
 
         endif;
 

@@ -62,12 +62,12 @@ class Callback {
             'placeholder'=>__('title',PLUGIN_DOMAIN)
         );
 
-        $field_value = ( isset(Settings::$plugin_db['modules'][ Setup::$module ]['map_center']['title']) )? Settings::$plugin_db['modules'][ Setup::$module ]['map_center']['title']:'';
+        $field_value = ( isset(Settings::$plugin_db['modules'][ Setup::$module ]['map_center_title']) )? Settings::$plugin_db['modules'][ Setup::$module ]['map_center_title']:'';
 
 
 
         return '<label for="'.esc_attr($params['id']).'">'.__('title',PLUGIN_DOMAIN).'</label>
-        <input type="text" id="'.esc_attr($params['id']).'" style="width:25%;" class="'.esc_attr($params['class']).'" name="'.Settings::$plugin_option.'[modules]['.Setup::$module.'][map_center][title]" value="'.esc_html($field_value).'" placeholder="'.esc_html($params['placeholder']).'" />';
+        <input type="text" id="'.esc_attr($params['id']).'" style="width:25%;" class="'.esc_attr($params['class']).'" name="'.Settings::$plugin_option.'[modules]['.Setup::$module.'][map_center_title]" value="'.esc_html($field_value).'" placeholder="'.esc_html($params['placeholder']).'" />';
 
     }
 
@@ -79,10 +79,10 @@ class Callback {
             'placeholder'=>__('lattitude',PLUGIN_DOMAIN)
         );
 
-        $field_value = ( isset(Settings::$plugin_db['modules'][ Setup::$module ]['map_center']['lat']) )? Settings::$plugin_db['modules'][ Setup::$module ]['map_center']['lat']:'';
+        $field_value = ( isset(Settings::$plugin_db['modules'][ Setup::$module ]['map_center_lat']) )? Settings::$plugin_db['modules'][ Setup::$module ]['map_center_lat']:'';
 
         return '<label for="'.esc_attr($params['id']).'">'.__('lattitude',PLUGIN_DOMAIN).'</label>
-        <input type="text" id="'.esc_attr($params['id']).'" style="width:15%;" class="'.esc_attr($params['class']).'" name="'.Settings::$plugin_option.'[modules]['.Setup::$module.'][map_center][lat]" value="'.esc_html($field_value).'" placeholder="'.esc_html($params['placeholder']).'" />';
+        <input type="text" id="'.esc_attr($params['id']).'" style="width:15%;" class="'.esc_attr($params['class']).'" name="'.Settings::$plugin_option.'[modules]['.Setup::$module.'][map_center_lat]" value="'.esc_html($field_value).'" placeholder="'.esc_html($params['placeholder']).'" />';
 
     }
 
@@ -94,10 +94,10 @@ class Callback {
             'placeholder'=>__('longitude',PLUGIN_DOMAIN)
         );
 
-        $field_value = ( isset(Settings::$plugin_db['modules'][ Setup::$module ]['map_center']['long']) )? Settings::$plugin_db['modules'][ Setup::$module ]['map_center']['long']:'';
+        $field_value = ( isset(Settings::$plugin_db['modules'][ Setup::$module ]['map_center_long']) )? Settings::$plugin_db['modules'][ Setup::$module ]['map_center_long']:'';
 
         return '<label for="'.esc_attr($params['id']).'">'.__('longitude',PLUGIN_DOMAIN).'</label>
-        <input type="text" id="'.esc_attr($params['id']).'" style="width:15%;" class="'.esc_attr($params['class']).'" name="'.Settings::$plugin_option.'[modules]['.Setup::$module.'][map_center][long]" value="'.esc_html($field_value).'" placeholder="'.esc_html($params['placeholder']).'" />';
+        <input type="text" id="'.esc_attr($params['id']).'" style="width:15%;" class="'.esc_attr($params['class']).'" name="'.Settings::$plugin_option.'[modules]['.Setup::$module.'][map_center_long]" value="'.esc_html($field_value).'" placeholder="'.esc_html($params['placeholder']).'" />';
 
     }
 

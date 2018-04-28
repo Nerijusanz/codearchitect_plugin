@@ -4,6 +4,7 @@
  */
 
 use CA_Inc\modules\gmap\table\TableSetup;
+use CA_Inc\modules\api\ModulesSetup;
 
 echo TableSetup::page_link();
 
@@ -14,6 +15,8 @@ echo '<form method="post" action="'.admin_url('admin-post.php').'">';
     wp_nonce_field($table.'_add_action',$table.'_add_nonce');
 
     echo '<input type="hidden" name="action" value="'.$table.'_form_add" />';?>
+
+        <?php echo TableSetup::field_item_id(ModulesSetup::generate_id());?>
 
         <table class="form-table">
 

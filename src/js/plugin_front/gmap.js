@@ -11,19 +11,9 @@ class Gmap {
 
         var options = {
             zoom: Number(ca_localize.gmap.map_zoom),
-            center:{ lat: Number(ca_localize.gmap.map_center.lat), lng: Number(ca_localize.gmap.map_center.long)},
+            center:{ lat: Number(ca_localize.gmap.map_center_lat), lng: Number(ca_localize.gmap.map_center_long)},
             locations: ca_localize.gmap.locations
         };
-
-
-
-        /*var locations = [
-            {title:'vilnius',coords:{lat: 54.68916, lng: 25.2798}},
-            {title:'kaunas',coords:{lat: 54.898521, lng: 23.903597}},
-            {title:'klaipeda',coords:{lat: 55.71722, lng: 21.1175}},
-            {title:'plunge',coords:{lat: 55.91139, lng: 21.84417}}
-        ];*/
-
 
         function initMap() {
 
@@ -38,10 +28,13 @@ class Gmap {
             });
 
 
-            for(var i=0;i<options.locations.length;i++){
 
-                addMarker(options.locations[i]);
+            if(options.locations.length > 0) {
+                for (var i = 0; i < options.locations.length; i++) {
 
+                    addMarker(options.locations[i]);
+
+                }
             }
 
             function addMarker(location){
