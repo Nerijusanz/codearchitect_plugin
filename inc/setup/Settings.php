@@ -101,6 +101,9 @@ class Settings {
             )//manager module: turn on/off other modules
         );
 
+
+
+
     }
 
 

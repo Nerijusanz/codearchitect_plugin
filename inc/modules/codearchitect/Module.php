@@ -33,7 +33,7 @@ class Module {
                 'page_title' => __(Setup::$module_title,PLUGIN_DOMAIN),
                 'menu_title' => __(Setup::$module_title,PLUGIN_DOMAIN),
                 'capability' => Setup::$module_capability,
-                'menu_slug' => Setup::$module_slug,
+                'menu_slug' => Setup::$module,//Setup::$module_slug,
                 'callback' => function(){Callback::template();},
                 'icon_url' => Setup::$module_icon,
                 'position' => Setup::$module_menu_position

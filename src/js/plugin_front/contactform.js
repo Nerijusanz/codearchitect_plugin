@@ -104,7 +104,7 @@ class Contactform{
                     }
 
                     if(status == 1){
-                        
+
                         setTimeout(function(){ location.reload(); }, 2500);
 
                     }  //if status 1, that`s mean everything is ok; close the form;

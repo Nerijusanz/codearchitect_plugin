@@ -44,6 +44,7 @@ final class Init    //setup final class - child classes can`t override or extend
     public function plugin_modules(){
 
         //plugin modules api
+        new modules\api\ModulesList();
         new modules\api\ModulesApi(); //class initialize modules admin_pages , subpages, settings,sections,fields;
         new modules\api\ModulesSetup(); //plugin all modules setup
         //plugin modules
