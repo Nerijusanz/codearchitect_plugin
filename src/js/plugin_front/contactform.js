@@ -4,7 +4,7 @@ class Contactform{
     constructor(){
 
         this.init();
-
+        console.log('contactform updated 5');
     }
 
     init(){
@@ -103,7 +103,11 @@ class Contactform{
                         make_field_border_red(fields); //look function below;add border red on fields which got error on server-side
                     }
 
-                    if(status == 1){form.fadeToggle(320);}  //if status 1, that`s mean everything is ok; close the form;
+                    if(status == 1){
+                        
+                        setTimeout(function(){ location.reload(); }, 2500);
+
+                    }  //if status 1, that`s mean everything is ok; close the form;
 
 
                 }//success block
@@ -111,6 +115,7 @@ class Contactform{
 
 
         }
+
 
 
         function make_input_validation(){ //form input fields which need to validate
