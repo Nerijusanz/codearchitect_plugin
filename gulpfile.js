@@ -27,24 +27,24 @@ var browserSync  = require( 'browser-sync' ).create();
 var reload       = browserSync.reload;
 
 // Project related variables
-var exposeConfig = { expose: { jquery: 'jQuery' } };
-var projectURL   = 'http://codearchitect';
+var projectURL   = 'http://www.codearchitect.lt';
 
-var npm = './node_modules';
+
 //SCSS
-var styleAdminSrcFile = 'codearchitect_plugin_admin.scss';
+var styleAdminSrcFile = 'admin.scss';
+var styleFrontSrcFile = 'front.scss';
+
 var styleAdminSRC = './src/scss/' + styleAdminSrcFile;
-var styleFrontSrcFile = 'codearchitect_plugin_front.scss';
-var styleFrontSRC = './src/scss/'+styleFrontSrcFile;
+var styleFrontSRC = './src/scss/' + styleFrontSrcFile;
 var styleURL     = './assets/css/';
 var mapURL       = './';
 
 //JS
 var jsSRC        = './src/js/';
-var jsSrcSettingsFile      = 'codearchitect_plugin_settings.js';
-var jsSrcAdminFile      = 'codearchitect_plugin_admin.js';
-var jsSrcFrontFile  = 'codearchitect_plugin_front.js';
-var jsAdminFrontFile = 'codearchitect_plugin_admin.min.js'; //added prefix min.js
+var jsSrcSettingsFile      = 'settings.js';
+var jsSrcAdminFile      = 'admin.js';
+var jsSrcFrontFile  = 'front.js';
+
 var jsFiles      = [ jsSrcSettingsFile, jsSrcAdminFile, jsSrcFrontFile ];
 var jsURL        = './assets/js/';
 
@@ -119,13 +119,14 @@ gulp.task( 'images', function() {
 });
 
 gulp.task( 'fonts', function() {
-
-    /*gulp.src([
-        npm + '/bootstrap-sass/assets/fonts/**'
+    
+    var npm = './node_modules/';
+    gulp.src([
+        npm + 'bootstrap-sass/assets/fonts/**'
     ]).pipe(plumber())
-        .pipe(gulp.dest(fontsURL));*/
+        .pipe(gulp.dest(fontsURL));
 
-    triggerPlumber( fontsSRC, fontsURL );
+    //triggerPlumber( fontsSRC, fontsURL );
 });
 
 function triggerPlumber( src, url ) {
@@ -135,8 +136,10 @@ function triggerPlumber( src, url ) {
 }
 
 gulp.task( 'default', ['styles', 'js', 'images', 'fonts'], function() {
-    gulp.src( jsURL + jsAdminFrontFile )
+
+    gulp.src( jsURL + 'admin.min.js' )
         .pipe( notify({ message: 'Assets Compiled!' }) );
+
 });
 
 gulp.task( 'watch', ['default', 'browser-sync'], function() {
@@ -145,6 +148,8 @@ gulp.task( 'watch', ['default', 'browser-sync'], function() {
     gulp.watch( jsWatch, [ 'js', reload ] );
     gulp.watch( imgWatch, [ 'images' ] );
     gulp.watch( fontsWatch, [ 'fonts' ] );
-    gulp.src( jsURL + jsAdminFrontFile )
+
+    gulp.src( jsURL + 'admin.min.js' )
         .pipe( notify({ message: 'Gulp watch activated!' }) );
+
 });

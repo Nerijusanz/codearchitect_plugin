@@ -48,20 +48,20 @@ class Enqueue {
 
         wp_deregister_script( 'jquery' ); // Deregister the built-in version of jQuery from WordPress
 
-        wp_enqueue_style( 'admin-style', Settings::$plugin_url . 'assets/css/codearchitect_plugin_admin.min.css', array(), '', 'all' );
-        wp_enqueue_script( 'admin-js', Settings::$plugin_url . 'assets/js/codearchitect_plugin_admin.min.js', array(),'',true );    //true: add js link at page bottom
+        wp_enqueue_style( 'admin-style', Settings::$plugin_url . 'assets/css/admin.min.css', array(), '', 'all' );
+        wp_enqueue_script( 'admin-js', Settings::$plugin_url . 'assets/js/admin.min.js', array(),'',true );    //true: add js link at page bottom
 
 	}
 
 
 	public function frontend_enqueue() {
 
-        wp_enqueue_style( 'front-style', Settings::$plugin_url . 'assets/css/codearchitect_plugin_front.min.css', array(), '', 'all' );
+        wp_enqueue_style( 'front-style', Settings::$plugin_url . 'assets/css/front.min.css', array(), '', 'all' );
         //plugin back-end settings to js file
-		wp_enqueue_script( 'front-settings', Settings::$plugin_url . 'assets/js/codearchitect_plugin_settings.min.js', array(),'', true );    //for localization params
+		wp_enqueue_script( 'front-settings', Settings::$plugin_url . 'assets/js/settings.min.js', array(),'', true );    //for localization params
         wp_localize_script('front-settings',Settings::$localize_front_settings_name,Settings::$localize_front_settings); //Settings->localize_front_settings();
 
-        wp_enqueue_script( 'front-js', Settings::$plugin_url . 'assets/js/codearchitect_plugin_front.min.js', array(),'', true );
+        wp_enqueue_script( 'front-js', Settings::$plugin_url . 'assets/js/front.min.js', array(),'', true );
 	}
 
 }
