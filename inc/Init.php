@@ -20,8 +20,7 @@ final class Init    //setup final class - child classes can`t override or extend
 
         $this->plugin_core_classes();
         $this->plugin_modules();
-        $this->site_core_classes();
-
+        
     }
 
 
@@ -58,24 +57,6 @@ final class Init    //setup final class - child classes can`t override or extend
         new modules\manager\Init();
 
     }
-
-
-    public function site_core_classes(){
-        //setup
-        new site_core\setup\Theme_settings();
-        new site_core\setup\Theme_setup();
-        new site_core\setup\Mobile_detect();
-        new site_core\setup\Body_class_setup();
-        //menu
-        new site_core\menu\MenuInit();
-        //shortcodes
-        new site_core\shortcodes\ShortcodeInit();
-
-    }
-
-
-
-
 
 
 }
